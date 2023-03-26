@@ -15,7 +15,6 @@
         <item name="android:colorBackground">@color/white</item>
         <item name="colorOnBackground">@color/black</item>
         <!-- Others colors. -->
-        <item name="android:textColorPrimaryDisableOnly">@color/brown_700</item>
         <item name="android:textColorHint">@color/black_50</item>
     </style>
 </resources>
