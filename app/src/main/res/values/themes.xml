@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CreatePC" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary color. -->
+        <item name="colorPrimary">@color/orange_500</item>
+        <item name="colorPrimaryVariant">@color/orange_300</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
+        <!-- Customize your theme here. -->
+        <!-- Surface color. -->
+        <item name="colorSurface">@color/gray_200</item>
+        <item name="colorOnSurface">@color/black</item>
+        <!-- Background color. -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/black</item>
+        <!-- Others colors. -->
+        <item name="android:textColorPrimaryDisableOnly">@color/brown_700</item>
+        <item name="android:textColorHint">@color/black_50</item>
+    </style>
+</resources>
