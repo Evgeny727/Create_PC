@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nav text dimen -->
+    <dimen name="navText">12sp</dimen>
+    <!-- Card text dimens -->
+    <dimen name="cardTitle">16sp</dimen>
+    <dimen name="cardPrice">16sp</dimen>
+    <dimen name="cardAmount">15sp</dimen>
+    <dimen name="cardSpecifications">12sp</dimen>
+    <!-- Button text dimens -->
+    <dimen name="buttonLarge">14sp</dimen>
+    <dimen name="buttonSmall">11sp</dimen>
+</resources>
