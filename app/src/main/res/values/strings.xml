@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Create PC</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_create">workshop</string>
+    <string name="menu_search">search</string>
+    <string name="menu_builds">builds</string>
+
+    <string name="hello_start_fragment">Hello start fragment</string>
+    <string name="hello_search_fragment">Hello search fragment</string>
+    <string name="hello_builds_fragment">Hello builds fragment</string>
 </resources>

@@ -16,5 +16,7 @@
         <item name="colorOnBackground">@color/black</item>
         <!-- Others colors. -->
         <item name="android:textColorHint">@color/black_50</item>
+        <item name="bottomNavigationBackground">?android:attr/colorBackground</item>
+        <item name="iconTint">?attr/colorOnBackground</item>
     </style>
 </resources>
