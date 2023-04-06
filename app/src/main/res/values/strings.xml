@@ -4,6 +4,8 @@
     <string name="menu_search">search</string>
     <string name="menu_builds">builds</string>
 
+    <string name="theme_btn_text">Theme</string>
+
     <string name="hello_start_fragment">Hello start fragment</string>
     <string name="hello_search_fragment">Hello search fragment</string>
     <string name="hello_builds_fragment">Hello builds fragment</string>
