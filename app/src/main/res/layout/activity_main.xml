@@ -32,6 +32,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/ru_btn"
                 android:textAllCaps="false"
+                app:strokeWidth="3dp"
+                app:strokeColor="?attr/colorPrimaryVariant"
                 android:textSize="@dimen/buttonLarge"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -40,11 +42,14 @@
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Material3.Button.Icon"
-                android:paddingLeft="4dp"
-                android:paddingRight="14dp"
+                app:strokeWidth="20dp"
+                app:strokeColor="?attr/colorPrimaryVariant"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/en_btn"
                 android:textAllCaps="false"
                 android:textSize="@dimen/buttonLarge"
+                android:textColor="@color/brown_700"
                 android:fontFamily="@font/roboto_medium" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>

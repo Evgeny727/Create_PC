@@ -8,8 +8,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.example.createpc.databinding.ActivityMainBinding;
@@ -72,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             en_btn.setChecked(true);
             en_btn.setIcon(ic_check);
+            en_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
+            en_btn.setTextColor(getResources().getColor(R.color.black));
+            ru_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 21, getResources().getDisplayMetrics()));
+
             en_btn.setCheckable(false);
         }
         //Listener for changing app language
@@ -80,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 //TODO: add language changing
                 if (isChecked) {
                     ru_btn.setIcon(ic_check);
+                    ru_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
                     ru_btn.setCheckable(false);
                     en_btn.setCheckable(true);
                     en_btn.setChecked(false);
@@ -89,11 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     ru_btn.setIcon(null);
+                    ru_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, 21, getResources().getDisplayMetrics()));
                 }
             } else if (checkedId == R.id.en_btn) {
                 //TODO: add language changing
                 if (isChecked) {
                     en_btn.setIcon(ic_check);
+                    en_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
                     en_btn.setCheckable(false);
                     ru_btn.setCheckable(true);
                     ru_btn.setChecked(false);
@@ -103,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     en_btn.setIcon(null);
+                    en_btn.setStrokeWidth((int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, 21, getResources().getDisplayMetrics()));
                 }
             }
         });
