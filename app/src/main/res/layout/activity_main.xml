@@ -9,7 +9,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_bar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
+        style="@style/Widget.Material3.Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,13 +23,31 @@
             android:layout_height="wrap_content"
             app:singleSelection="true">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ru_btn"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.Icon"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/ru_btn"
+                android:textAllCaps="false"
+                android:textSize="@dimen/buttonLarge"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/en_btn"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.Icon"
+                android:paddingLeft="4dp"
+                android:paddingRight="14dp"
+                android:text="@string/en_btn"
+                android:textAllCaps="false"
+                android:textSize="@dimen/buttonLarge"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
