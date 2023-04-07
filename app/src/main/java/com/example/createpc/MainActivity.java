@@ -66,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
         if (settings.getString("language", "Ru").equals("Ru")) {
             ru_btn.setChecked(true);
             ru_btn.setIcon(ic_check);
+            ru_btn.setCheckable(false);
         } else {
             en_btn.setChecked(true);
             en_btn.setIcon(ic_check);
+            en_btn.setCheckable(false);
         }
         //Listener for changing app language
         toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
@@ -76,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 //TODO: add language changing
                 if (isChecked) {
                     ru_btn.setIcon(ic_check);
+                    ru_btn.setCheckable(false);
+                    en_btn.setCheckable(true);
+                    en_btn.setChecked(false);
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString("language", "Ru");
                     editor.apply();
@@ -87,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 //TODO: add language changing
                 if (isChecked) {
                     en_btn.setIcon(ic_check);
+                    en_btn.setCheckable(false);
+                    ru_btn.setCheckable(true);
+                    ru_btn.setChecked(false);
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString("language", "En");
                     editor.apply();

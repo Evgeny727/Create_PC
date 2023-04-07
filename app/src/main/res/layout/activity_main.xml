@@ -33,7 +33,6 @@
                 android:text="@string/ru_btn"
                 android:textAllCaps="false"
                 android:textSize="@dimen/buttonLarge"
-                android:textColor="@color/black"
                 android:fontFamily="@font/roboto_medium" />
 
             <com.google.android.material.button.MaterialButton
@@ -46,7 +45,6 @@
                 android:text="@string/en_btn"
                 android:textAllCaps="false"
                 android:textSize="@dimen/buttonLarge"
-                android:textColor="@color/black"
                 android:fontFamily="@font/roboto_medium" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
