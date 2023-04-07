@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             en_btn.setIcon(ic_check);
             en_btn.setStrokeWidth((int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics()));
-            en_btn.setTextColor(getResources().getColor(R.color.black));
             ru_btn.setStrokeWidth((int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP, 21, getResources().getDisplayMetrics()));
 

@@ -49,7 +49,6 @@
                 android:text="@string/en_btn"
                 android:textAllCaps="false"
                 android:textSize="@dimen/buttonLarge"
-                android:textColor="@color/brown_700"
                 android:fontFamily="@font/roboto_medium" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
