@@ -17,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding activityMainBinding;
@@ -109,17 +111,25 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         BottomNavigationView bottomNavigationView = activityMainBinding.navigationMenu;
+
+        //Listener for app navigation
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemID = item.getItemId();
             if (itemID == R.id.page_create) {
-                item.setChecked(true);
-                navController.navigate(R.id.startFragment);
+                if (!Objects.equals(navController.getCurrentDestination(), navController.findDestination(R.id.startFragment))) {
+                    item.setChecked(true);
+                    navController.navigate(R.id.startFragment);
+                }
             } else if (itemID == R.id.page_search) {
-                item.setChecked(true);
-                navController.navigate(R.id.searchFragment);
+                if (!Objects.equals(navController.getCurrentDestination(), navController.findDestination(R.id.searchFragment))) {
+                    item.setChecked(true);
+                    navController.navigate(R.id.searchFragment);
+                }
             } else if (itemID == R.id.page_builds) {
-                item.setChecked(true);
-                navController.navigate(R.id.buildsFragment);
+                if (!Objects.equals(navController.getCurrentDestination(), navController.findDestination(R.id.buildsFragment))) {
+                    item.setChecked(true);
+                    navController.navigate(R.id.buildsFragment);
+                }
             }
             return false;
         });
