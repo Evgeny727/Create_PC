@@ -12,6 +12,20 @@
     <!-- StartFragment button text -->
     <string name="create_build">Create PC configuration</string>
 
-    <string name="hello_search_fragment">Hello search fragment</string>
+    <!-- SearchFragment cards text -->
+    <string name="contentDescription_category_img">category image</string>
+
+    <string name="cpu_category_name">Processors</string>
+    <string name="gpu_category_name">Graphics cards</string>
+    <string name="motherboard_category_name">Motherboards</string>
+    <string name="psu_category_name">Power Supplies</string>
+    <string name="ram_category_name">RAM</string>
+    <string name="case_category_name">Cases</string>
+    <string name="ssdM_category_name">SSD drives(M.2)</string>
+    <string name="ssd2_category_name">SSD drives(2.5")</string>
+    <string name="hdd_category_name">Hard drives</string>
+    <string name="cpu_cooling_category_name">Processor Coolers</string>
+    <string name="case_cooling_category_name">Case fans</string>
+
     <string name="hello_builds_fragment">Hello builds fragment</string>
 </resources>

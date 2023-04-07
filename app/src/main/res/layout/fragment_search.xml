@@ -1,14 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SearchFragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
 
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/category_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_search_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cpu_category"
+            style="@style/CardView_in_category_card"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/gpu_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/cpu_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/cpu_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/gpu_category"
+            style="@style/CardView_in_category_card"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toRightOf="@id/cpu_category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/gpu_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/gpu_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/motherboard_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/psu_category"
+            app:layout_constraintTop_toBottomOf="@id/cpu_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/motherboard_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/motherboard_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/psu_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toRightOf="@id/motherboard_category"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gpu_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/psu_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/psu_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ram_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/case_category"
+            app:layout_constraintTop_toBottomOf="@id/motherboard_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/ram_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/ram_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/case_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toRightOf="@id/ram_category"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/psu_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/case_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/case_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ssdM_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ssd2_category"
+            app:layout_constraintTop_toBottomOf="@id/ram_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/ssdm_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/ssdM_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ssd2_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toRightOf="@id/ssdM_category"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/case_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/ssd2_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/ssd2_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/hdd_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
+            app:layout_constraintTop_toBottomOf="@id/ssdM_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/hdd_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/hdd_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cpu_cooling_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toRightOf="@id/hdd_category"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ssd2_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/cpu_cooling_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/cpu_cooling_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/case_cooling_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
+            app:layout_constraintTop_toBottomOf="@id/hdd_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/case_cooling_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/case_cooling_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

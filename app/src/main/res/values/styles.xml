@@ -5,4 +5,32 @@
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/navText</item>
     </style>
+
+    <!-- Styles for main search page -->
+    <style name="CardView_in_category_card">
+        <item name="android:layout_width">156dp</item>
+        <item name="android:layout_height">168dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="img_in_category_card">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">124dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="text_in_category_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/cardSpecifications</item>
+    </style>
+    <style name="LinearLayout_in_category_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 </resources>
