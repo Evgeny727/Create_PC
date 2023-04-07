@@ -1,15 +1,17 @@
 <resources>
     <string name="app_name">Create PC</string>
+    <!-- Nav bottom bar buttons text -->
     <string name="menu_create">workshop</string>
     <string name="menu_search">search</string>
     <string name="menu_builds">builds</string>
-
     <!-- Tool bar buttons text -->
     <string name="theme_btn_text">Theme</string>
     <string name="ru_btn">Ru</string>
     <string name="en_btn">En</string>
 
-    <string name="hello_start_fragment">Hello start fragment</string>
+    <!-- StartFragment button text -->
+    <string name="create_build">Create PC configuration</string>
+
     <string name="hello_search_fragment">Hello search fragment</string>
     <string name="hello_builds_fragment">Hello builds fragment</string>
 </resources>
