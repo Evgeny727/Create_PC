@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SearchFragment"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp">
+    android:paddingRight="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/category_layout"
@@ -217,17 +216,22 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/case_cooling_category"
             style="@style/CardView_in_category_card"
+            android:layout_marginBottom="16dp"
             app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
             app:layout_constraintTop_toBottomOf="@id/hdd_category">
+
             <LinearLayout style="@style/LinearLayout_in_category_card">
+
                 <ImageView
                     style="@style/img_in_category_card"
-                    android:src="@drawable/case_cooling_category_img"
-                    android:contentDescription="@string/contentDescription_category_img" />
+                    android:contentDescription="@string/contentDescription_category_img"
+                    android:src="@drawable/case_cooling_category_img" />
+
                 <TextView
                     style="@style/text_in_category_card"
                     android:text="@string/case_cooling_category_name" />
