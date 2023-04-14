@@ -2,22 +2,15 @@ package com.example.createpc;
 
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.createpc.databinding.FragmentCreateBinding;
-import com.example.createpc.databinding.FragmentStartBinding;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
