@@ -6,7 +6,7 @@
         <item name="android:textSize">@dimen/navText</item>
     </style>
 
-    <!-- Styles for main search page -->
+    <!-- Styles for category search page -->
     <style name="CardView_in_category_card">
         <item name="android:layout_width">156dp</item>
         <item name="android:layout_height">168dp</item>
@@ -32,5 +32,110 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Styles for create page cards -->
+    <style name="CardView_in_create_card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintWidth_max">500dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">15dp</item>
+
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+    </style>
+    <style name="header_in_create_card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/cardTitle</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+    </style>
+    <style name="img_in_create_card">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+    <style name="LinearLayout_in_create_card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="LinearLayout1_in_create_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="ConstraintLayout_btns_in_create_card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="ConstraintLayout_in_create_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="specifications_in_create_card">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/cardSpecifications</item>
+    </style>
+    <style name="specifications_in_create_card.Add">
+        <item name="android:paddingLeft">1dp</item>
+    </style>
+    <style name="price_in_create_card">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/cardPrice</item>
+        <item name="android:textAlignment">center</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+    </style>
+    <style name="btns_in_create_card" parent="Widget.Material3.Button.Icon">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="layout_constraintWidth_max">150dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/buttonSmall</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+    <!-- Styles for 2 buttons in create page -->
+    <style name="btns_in_create_page" parent="Widget.Material3.Button.Icon">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintWidth_max">200dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/buttonLarge</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
 </resources>

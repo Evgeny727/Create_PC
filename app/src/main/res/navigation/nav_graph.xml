@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startFragment_to_buildsFragment"
             app:destination="@id/buildsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
 
     <fragment
@@ -42,5 +45,16 @@
         <action
             android:id="@+id/action_buildsFragment_to_startFragment"
             app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.example.createpc.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_createFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

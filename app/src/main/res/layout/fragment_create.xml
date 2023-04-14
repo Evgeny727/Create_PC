@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:ignore="MissingConstraints">
+    <!-- TODO: Optimize scrollView by replacing with RecyclerView -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/create_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cpu_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/cpu_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/cpu_type" />
+                    <ImageView
+                        android:id="@+id/cpu_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/cpu_specifications"
+                        app:layout_constraintTop_toBottomOf="@id/cpu_header" />
+                    <LinearLayout
+                        android:id="@+id/cpu_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/cpu_img"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_header"
+                        app:layout_constraintBottom_toTopOf="@+id/cpu_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/socket"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/core_amount"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/clock_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/clock_speed_turbo"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/heat_dissipation"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/cpu_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/cpu_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cpu_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/cpu_price"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_cpu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_cpu_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_cpu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_cpu_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gpu_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/cpu_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/gpu_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/gpu_type" />
+                    <ImageView
+                        android:id="@+id/gpu_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/gpu_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_header" />
+                    <LinearLayout
+                        android:id="@+id/gpu_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/gpu_img"
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_header"
+                        app:layout_constraintBottom_toTopOf="@+id/gpu_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/memory_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/gpu_clock_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/gpu_clock_speed_turbo"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/rec_psu"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/gpu_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/gpu_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/gpu_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/gpu_price"
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_gpu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_gpu_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_gpu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_gpu_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/motherboard_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/gpu_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/motherboard_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/motherboard_type" />
+                    <ImageView
+                        android:id="@+id/motherboard_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/motherboard_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/motherboard_header" />
+                    <LinearLayout
+                        android:id="@+id/motherboard_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/motherboard_img"
+                        app:layout_constraintTop_toBottomOf="@+id/motherboard_header"
+                        app:layout_constraintBottom_toTopOf="@+id/motherboard_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/socket"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/chipset"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/memory_slots"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/memory_type"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/form_factor"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/motherboard_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/motherboard_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/motherboard_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/motherboard_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/motherboard_price"
+                        app:layout_constraintTop_toBottomOf="@+id/motherboard_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_motherboard_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_motherboard_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_motherboard_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_motherboard_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/psu_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/motherboard_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/psu_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/psu_type" />
+                    <ImageView
+                        android:id="@+id/psu_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/psu_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/psu_header" />
+                    <LinearLayout
+                        android:id="@+id/psu_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/psu_img"
+                        app:layout_constraintTop_toBottomOf="@+id/psu_header"
+                        app:layout_constraintBottom_toTopOf="@+id/psu_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/power"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/psu_standard"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/fan_size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/certification"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/modular_cables"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/psu_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/psu_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/psu_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/psu_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/psu_price"
+                        app:layout_constraintTop_toBottomOf="@+id/psu_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_psu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_psu_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_psu_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_psu_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ram_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/psu_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/ram_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/ram_type" />
+                    <ImageView
+                        android:id="@+id/ram_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/ram_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/ram_header" />
+                    <LinearLayout
+                        android:id="@+id/ram_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ram_img"
+                        app:layout_constraintTop_toBottomOf="@+id/ram_header"
+                        app:layout_constraintBottom_toTopOf="@+id/ram_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/memory_type"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/memory_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/module_amount"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/clock_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/bandwidth"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/ram_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ram_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/ram_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ram_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ram_price"
+                        app:layout_constraintTop_toBottomOf="@+id/ram_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_ram_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_ram_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_ram_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_ram_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cpu_cooling_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/ram_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/cpu_cooling_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/cpu_cooling_type" />
+                    <ImageView
+                        android:id="@+id/cpu_cooling_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/cpu_cooling_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_cooling_header" />
+                    <LinearLayout
+                        android:id="@+id/cpu_cooling_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/cpu_cooling_img"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_cooling_header"
+                        app:layout_constraintBottom_toTopOf="@+id/cpu_cooling_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/socket"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/power_dissipation"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/cooler_height"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/fan_size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/noise_level"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/cpu_cooling_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/cpu_cooling_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_cooling_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cpu_cooling_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/cpu_cooling_price"
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_cooling_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_cpu_cooling_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_cpu_cooling_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_cpu_cooling_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_cpu_cooling_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/case_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/cpu_cooling_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/case_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/case_type" />
+                    <ImageView
+                        android:id="@+id/case_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/case_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/case_header" />
+                    <LinearLayout
+                        android:id="@+id/case_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/case_img"
+                        app:layout_constraintTop_toBottomOf="@+id/case_header"
+                        app:layout_constraintBottom_toTopOf="@+id/case_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/nominal_size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/form_factor"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/max_gpu_width"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/max_cooler_height"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/case_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/case_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/case_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/case_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/case_price"
+                        app:layout_constraintTop_toBottomOf="@+id/case_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_case_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_case_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_case_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_case_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ssdM_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/case_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/ssdM_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/ssdM_type" />
+                    <ImageView
+                        android:id="@+id/ssdM_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/ssdM_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/ssdM_header" />
+                    <LinearLayout
+                        android:id="@+id/ssdM_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ssdM_img"
+                        app:layout_constraintTop_toBottomOf="@+id/ssdM_header"
+                        app:layout_constraintBottom_toTopOf="@+id/ssdM_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/form_factor"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/drive_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/drive_interface"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/read_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/write_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/ssdM_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ssdM_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/ssdM_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ssdM_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ssdM_price"
+                        app:layout_constraintTop_toBottomOf="@+id/ssdM_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_ssdM_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_ssdM_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_ssdM_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_ssdM_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ssd2_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/ssdM_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/ssd2_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/ssd2_type" />
+                    <ImageView
+                        android:id="@+id/ssd2_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/ssd2_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/ssd2_header" />
+                    <LinearLayout
+                        android:id="@+id/ssd2_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ssd2_img"
+                        app:layout_constraintTop_toBottomOf="@+id/ssd2_header"
+                        app:layout_constraintBottom_toTopOf="@+id/ssd2_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/form_factor"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/drive_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/drive_interface"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/read_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/write_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/ssd2_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ssd2_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/ssd2_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ssd2_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/ssd2_price"
+                        app:layout_constraintTop_toBottomOf="@+id/ssd2_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_ssd2_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_ssd2_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_ssd2_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_ssd2_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hdd_card"
+                style="@style/CardView_in_create_card"
+                app:layout_constraintTop_toBottomOf="@id/ssd2_card">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/hdd_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/hdd_type" />
+                    <ImageView
+                        android:id="@+id/hdd_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/hdd_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/hdd_header" />
+                    <LinearLayout
+                        android:id="@+id/hdd_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/hdd_img"
+                        app:layout_constraintTop_toBottomOf="@+id/hdd_header"
+                        app:layout_constraintBottom_toTopOf="@+id/hdd_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/form_factor"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/hard_drive_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/drive_interface"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/buffer_memory_capacity"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/rotation_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/hdd_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/hdd_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/hdd_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/hdd_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/hdd_price"
+                        app:layout_constraintTop_toBottomOf="@+id/hdd_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_hdd_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_hdd_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_hdd_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_hdd_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/case_cooling_card"
+                style="@style/CardView_in_create_card"
+                android:layout_marginBottom="64dp"
+                app:layout_constraintTop_toBottomOf="@id/hdd_card"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/ConstraintLayout_in_create_card">
+                    <TextView
+                        android:id="@+id/case_cooling_header"
+                        style="@style/header_in_create_card"
+                        android:text="@string/case_cooling_type" />
+                    <ImageView
+                        android:id="@+id/case_cooling_img"
+                        style="@style/img_in_create_card"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/case_cooling_specifications"
+                        app:layout_constraintTop_toBottomOf="@+id/case_cooling_header" />
+                    <LinearLayout
+                        android:id="@+id/case_cooling_specifications"
+                        style="@style/LinearLayout_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/case_cooling_img"
+                        app:layout_constraintTop_toBottomOf="@+id/case_cooling_header"
+                        app:layout_constraintBottom_toTopOf="@+id/case_cooling_btns">
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/fan_size"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/rotation_speed"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/airflow"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/noise_level"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                        <LinearLayout style="@style/LinearLayout1_in_create_card">
+                            <TextView
+                                style="@style/specifications_in_create_card"
+                                android:text="@string/illumination"/>
+                            <TextView
+                                style="@style/specifications_in_create_card.Add"
+                                android:text="@string/empty_param"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/case_cooling_price"
+                        style="@style/price_in_create_card"
+                        android:text="@string/default_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/case_cooling_btns"
+                        app:layout_constraintTop_toBottomOf="@+id/case_cooling_img" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/case_cooling_btns"
+                        style="@style/ConstraintLayout_btns_in_create_card"
+                        app:layout_constraintLeft_toRightOf="@id/case_cooling_price"
+                        app:layout_constraintTop_toBottomOf="@+id/case_cooling_specifications">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delete_case_cooling_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginRight="8dp"
+                            android:text="@string/btn_delete"
+                            app:icon="@drawable/ic_delete_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/add_case_cooling_btn" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/add_case_cooling_btn"
+                            style="@style/btns_in_create_card"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/btn_edit"
+                            app:icon="@drawable/ic_edit_12"
+                            app:iconGravity="textStart"
+                            app:layout_constraintLeft_toRightOf="@id/delete_case_cooling_btn"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_btn"
+        style="@style/btns_in_create_page"
+        android:text="@string/btn_cancel"
+        app:icon="@drawable/ic_clear_18"
+        app:iconGravity="textStart"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/save_btn"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_btn"
+        style="@style/btns_in_create_page"
+        android:text="@string/btn_save"
+        app:icon="@drawable/ic_check_18"
+        app:iconGravity="textStart"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/cancel_btn"
+        app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

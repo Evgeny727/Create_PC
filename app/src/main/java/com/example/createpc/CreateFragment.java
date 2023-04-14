@@ -2,24 +2,29 @@ package com.example.createpc;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.createpc.databinding.FragmentCreateBinding;
 import com.example.createpc.databinding.FragmentStartBinding;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StartFragment#newInstance} factory method to
+ * Use the {@link CreateFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StartFragment extends Fragment {
+public class CreateFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +35,7 @@ public class StartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StartFragment() {
+    public CreateFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +45,11 @@ public class StartFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StartFragment.
+     * @return A new instance of fragment CreateFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StartFragment newInstance(String param1, String param2) {
-        StartFragment fragment = new StartFragment();
+    public static CreateFragment newInstance(String param1, String param2) {
+        CreateFragment fragment = new CreateFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,27 +66,27 @@ public class StartFragment extends Fragment {
         }
     }
 
-    private FragmentStartBinding fragmentStartBinding;
+    private FragmentCreateBinding fragmentCreateBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fragmentStartBinding = FragmentStartBinding.inflate(inflater, container, false);
-        View view = fragmentStartBinding.getRoot();
-        MaterialButton materialButton = fragmentStartBinding.createBtn;
+        fragmentCreateBinding = FragmentCreateBinding.inflate(inflater, container, false);
+        View view = fragmentCreateBinding.getRoot();
+        MaterialButton cancelButton = fragmentCreateBinding.cancelBtn;
+        MaterialButton saveButton = fragmentCreateBinding.saveBtn;
         Fragment fragment = this;
-        materialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               NavHostFragment.findNavController(fragment).navigate(R.id.action_startFragment_to_createFragment);
-            }
+        cancelButton.setOnClickListener(v -> {
+            //TODO: add functionality
+            navigateToStart(fragment);
+        });
+        saveButton.setOnClickListener(v -> {
+            //TODO: add functionality
+            navigateToStart(fragment);
         });
         return view;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        fragmentStartBinding = null;
+    private void navigateToStart(Fragment fragment) {
+        NavHostFragment.findNavController(fragment).navigate(R.id.action_createFragment_to_startFragment);
     }
-
 }

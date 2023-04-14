@@ -12,9 +12,9 @@
     <!-- StartFragment button text -->
     <string name="create_build">Create PC configuration</string>
 
-    <!-- SearchFragment cards text -->
+    <!-- SearchFragment cards image description -->
     <string name="contentDescription_category_img">category image</string>
-
+    <!-- SearchFragment cards text -->
     <string name="cpu_category_name">Processors</string>
     <string name="gpu_category_name">Graphics cards</string>
     <string name="motherboard_category_name">Motherboards</string>
@@ -27,5 +27,67 @@
     <string name="cpu_cooling_category_name">Processor Coolers</string>
     <string name="case_cooling_category_name">Case fans</string>
 
+    <!-- Types of computer parts -->
+    <string name="cpu_type">Processor </string>
+    <string name="gpu_type">Graphics card </string>
+    <string name="motherboard_type">Motherboard </string>
+    <string name="psu_type">Power Supply </string>
+    <string name="ram_type">RAM </string>
+    <string name="case_type">Case </string>
+    <string name="ssdM_type">SSD drive(M.2) </string>
+    <string name="ssd2_type">SSD drive(2.5") </string>
+    <string name="hdd_type">Hard drive </string>
+    <string name="cpu_cooling_type">Processor Cooler </string>
+    <string name="case_cooling_type">Case fan </string>
+
+    <!-- Specifications of computer parts -->
+    <string name="empty_param">-</string>
+    <string name="socket">Socket: </string>
+    <string name="core_amount">Number of cores: </string>
+    <string name="clock_speed">Clock speed(MHz): </string>
+    <string name="clock_speed_turbo">Clock speed turbo(MHz): </string>
+    <string name="heat_dissipation">Heat dissipation(W): </string>
+    <string name="memory_capacity">Memory capacity(GB): </string>
+    <string name="gpu_clock_speed">GPU clock speed(MHz): </string>
+    <string name="gpu_clock_speed_turbo">GPU clock speed boost(MHz): </string>
+    <string name="rec_psu">Recommended power supply(W): </string>
+    <string name="size">Dimensions (WxHxD mm): </string>
+    <string name="chipset">Chipset: </string>
+    <string name="memory_slots">Number of memory slots: </string>
+    <string name="memory_type">Memory type: </string>
+    <string name="form_factor">Form factor: </string>
+    <string name="power">Power(W): </string>
+    <string name="psu_standard">Standard: </string>
+    <string name="fan_size">Fan size(mm): </string>
+    <string name="certification">80 PLUS certification: </string>
+    <string name="modular_cables">Modular cables: </string>
+    <string name="module_amount">Number of modules in the set: </string>
+    <string name="bandwidth">Memory bandwidth(Mb/s): </string>
+    <string name="power_dissipation">Maximum power dissipation(W): </string>
+    <string name="cooler_height">Cooler height(mm): </string>
+    <string name="noise_level">Noise level(dB): </string>
+    <string name="nominal_size">Nominal size: </string>
+    <string name="max_gpu_width">Maximum graphics card length: </string>
+    <string name="max_cooler_height">Maximum cooler height: </string>
+    <string name="drive_capacity">Drive capacity(GB): </string>
+    <string name="drive_interface">Interface: </string>
+    <string name="read_speed">Read speed(MB/sec): </string>
+    <string name="write_speed">Write speed(MB/sec): </string>
+    <string name="hard_drive_capacity">Hard drive capacity(GB): </string>
+    <string name="buffer_memory_capacity">Buffer memory capacity(MB): </string>
+    <string name="rotation_speed">Rotation speed(RPM): </string>
+    <string name="airflow">Airflow(CFM): </string>
+    <string name="illumination">Illumination: </string>
+
+
+    <string name="currency_icon">\u20bd</string>
+    <string name="default_price">0 \u20bd</string>
+
+    <string name="btn_delete">Delete</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_save">Save</string>
+
+    <!-- TODO: delete this string after creating fragments for this page -->
     <string name="hello_builds_fragment">Hello builds fragment</string>
 </resources>

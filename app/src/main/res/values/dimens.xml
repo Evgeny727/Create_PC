@@ -9,5 +9,5 @@
     <dimen name="cardSpecifications">12sp</dimen>
     <!-- Button text dimens -->
     <dimen name="buttonLarge">14sp</dimen>
-    <dimen name="buttonSmall">11sp</dimen>
+    <dimen name="buttonSmall">12sp</dimen>
 </resources>
