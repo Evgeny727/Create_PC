@@ -36,15 +36,11 @@
 
     <!-- Styles for create page cards -->
     <style name="CardView_in_create_card">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintWidth_max">500dp</item>
         <item name="android:layout_marginTop">16dp</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="cardCornerRadius">15dp</item>
-
-        <item name="layout_constraintLeft_toLeftOf">parent</item>
-        <item name="layout_constraintRight_toRightOf">parent</item>
     </style>
     <style name="header_in_create_card">
         <item name="android:layout_width">0dp</item>

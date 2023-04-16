@@ -1,23 +1,22 @@
-package com.example.createpc;
+package com.example.createpc.fragments.buildsfragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.createpc.databinding.FragmentSearchBinding;
+import com.example.createpc.R;
+import com.example.createpc.databinding.FragmentBuildsBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
+ * Use the {@link BuildsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment {
+public class BuildsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +27,7 @@ public class SearchFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SearchFragment() {
+    public BuildsFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +37,11 @@ public class SearchFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
+     * @return A new instance of fragment BuildsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
+    public static BuildsFragment newInstance(String param1, String param2) {
+        BuildsFragment fragment = new BuildsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,21 +58,18 @@ public class SearchFragment extends Fragment {
         }
     }
 
-    private FragmentSearchBinding fragmentSearchBinding;
+    private FragmentBuildsBinding fragmentBuildBinding;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fragmentSearchBinding = FragmentSearchBinding.inflate(inflater, container, false);
-        View view = fragmentSearchBinding.getRoot();
-//        ConstraintLayout constraintLayout = fragmentSearchBinding.categoryLayout;
-//        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-//            constraintLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    //TODO: realise navigate to part_search_list in particular category
-//                }
-//            });
-//        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        fragmentBuildBinding = FragmentBuildsBinding.inflate(inflater, container, false);
+        View view = fragmentBuildBinding.getRoot();
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentBuildBinding = null;
     }
 }

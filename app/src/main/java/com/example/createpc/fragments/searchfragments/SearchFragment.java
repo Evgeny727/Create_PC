@@ -1,25 +1,22 @@
-package com.example.createpc;
+package com.example.createpc.fragments.searchfragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.createpc.databinding.FragmentStartBinding;
-import com.google.android.material.button.MaterialButton;
+import com.example.createpc.databinding.FragmentSearchBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StartFragment#newInstance} factory method to
+ * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StartFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +27,7 @@ public class StartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StartFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +37,11 @@ public class StartFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StartFragment.
+     * @return A new instance of fragment SearchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StartFragment newInstance(String param1, String param2) {
-        StartFragment fragment = new StartFragment();
+    public static SearchFragment newInstance(String param1, String param2) {
+        SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,27 +58,27 @@ public class StartFragment extends Fragment {
         }
     }
 
-    private FragmentStartBinding fragmentStartBinding;
+    private FragmentSearchBinding fragmentSearchBinding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fragmentStartBinding = FragmentStartBinding.inflate(inflater, container, false);
-        View view = fragmentStartBinding.getRoot();
-        MaterialButton materialButton = fragmentStartBinding.createBtn;
-        Fragment fragment = this;
-        materialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               NavHostFragment.findNavController(fragment).navigate(R.id.action_startFragment_to_createFragment);
-            }
-        });
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        fragmentSearchBinding = FragmentSearchBinding.inflate(inflater, container, false);
+        View view = fragmentSearchBinding.getRoot();
+//        ConstraintLayout constraintLayout = fragmentSearchBinding.categoryLayout;
+//        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+//            constraintLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    //TODO: realise navigate to part_search_list in particular category
+//                }
+//            });
+//        }
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        fragmentStartBinding = null;
+        fragmentSearchBinding = null;
     }
-
 }

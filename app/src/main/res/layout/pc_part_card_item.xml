@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardView_in_create_card"
+    android:id="@+id/pc_part_card"
+    tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/ConstraintLayout_in_create_card">
+            <TextView
+                android:id="@+id/pc_part_card_header"
+                style="@style/header_in_create_card" />
+            <ImageView
+                android:id="@+id/pc_part_card_img"
+                style="@style/img_in_create_card"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/pc_part_card_specifications"
+                app:layout_constraintTop_toBottomOf="@id/pc_part_card_header" />
+            <LinearLayout
+                android:id="@+id/pc_part_card_specifications"
+                style="@style/LinearLayout_in_create_card"
+                app:layout_constraintLeft_toRightOf="@id/pc_part_card_img"
+                app:layout_constraintTop_toBottomOf="@+id/pc_part_card_header"
+                app:layout_constraintBottom_toTopOf="@+id/pc_part_card_btns">
+                <LinearLayout style="@style/LinearLayout1_in_create_card">
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_name1"
+                        style="@style/specifications_in_create_card"/>
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_value1"
+                        style="@style/specifications_in_create_card.Add"/>
+                </LinearLayout>
+                <LinearLayout style="@style/LinearLayout1_in_create_card">
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_name2"
+                        style="@style/specifications_in_create_card"/>
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_value2"
+                        style="@style/specifications_in_create_card.Add"/>
+                </LinearLayout>
+                <LinearLayout style="@style/LinearLayout1_in_create_card">
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_name3"
+                        style="@style/specifications_in_create_card"/>
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_value3"
+                        style="@style/specifications_in_create_card.Add"/>
+                </LinearLayout>
+                <LinearLayout style="@style/LinearLayout1_in_create_card">
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_name4"
+                        style="@style/specifications_in_create_card"/>
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_value4"
+                        style="@style/specifications_in_create_card.Add"/>
+                </LinearLayout>
+                <LinearLayout style="@style/LinearLayout1_in_create_card">
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_name5"
+                        style="@style/specifications_in_create_card"/>
+                    <TextView
+                        android:id="@+id/pc_part_card_spec_value5"
+                        style="@style/specifications_in_create_card.Add"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/pc_part_card_price"
+                style="@style/price_in_create_card"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/pc_part_card_btns"
+                app:layout_constraintTop_toBottomOf="@+id/pc_part_card_img" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pc_part_card_btns"
+                style="@style/ConstraintLayout_btns_in_create_card"
+                app:layout_constraintLeft_toRightOf="@id/pc_part_card_price"
+                app:layout_constraintTop_toBottomOf="@+id/pc_part_card_specifications">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pc_part_card_delete_btn"
+                    style="@style/btns_in_create_card"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/btn_delete"
+                    app:icon="@drawable/ic_delete_12"
+                    app:iconGravity="textStart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/pc_part_card_add_btn" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pc_part_card_add_btn"
+                    style="@style/btns_in_create_card"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/btn_edit"
+                    app:icon="@drawable/ic_edit_12"
+                    app:iconGravity="textStart"
+                    app:layout_constraintLeft_toRightOf="@id/pc_part_card_delete_btn"
+                    app:layout_constraintRight_toRightOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

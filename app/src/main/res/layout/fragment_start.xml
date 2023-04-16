@@ -7,7 +7,7 @@
     android:paddingBottom="8dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context=".StartFragment">
+    tools:context=".fragments.workshopfragments.StartFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/create_btn"
