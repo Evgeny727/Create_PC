@@ -53,20 +53,18 @@ public class CreateFragment extends Fragment {
         Fragment fragment = this;
         cancelButton.setOnClickListener(v -> {
             //TODO: add functionality
-            if (!StaticBuildDataTemporaryStorage.isIsEmpty()) StaticBuildDataTemporaryStorage.clearAll();
-            isNeedToSave = false;
             navigateToStart(fragment);
         });
         saveButton.setOnClickListener(v -> {
             //TODO: add functionality
-            if (!StaticBuildDataTemporaryStorage.isIsEmpty()) StaticBuildDataTemporaryStorage.clearAll();
-            isNeedToSave = false;
             navigateToStart(fragment);
         });
         return view;
     }
 
     private void navigateToStart(Fragment fragment) {
+        if (!StaticBuildDataTemporaryStorage.isIsEmpty()) StaticBuildDataTemporaryStorage.clearAll();
+        isNeedToSave = false;
         NavHostFragment.findNavController(fragment).navigate(R.id.action_createFragment_to_startFragment);
     }
 
