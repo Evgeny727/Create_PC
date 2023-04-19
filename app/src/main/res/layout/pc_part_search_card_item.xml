@@ -20,8 +20,7 @@
             android:id="@+id/pc_part_card_specifications"
             style="@style/LinearLayout_in_create_card"
             app:layout_constraintLeft_toRightOf="@id/pc_part_card_img"
-            app:layout_constraintTop_toBottomOf="@+id/pc_part_card_header"
-            app:layout_constraintBottom_toTopOf="@+id/pc_part_card_btns">
+            app:layout_constraintTop_toBottomOf="@+id/pc_part_card_header">
             <LinearLayout style="@style/LinearLayout1_in_create_card">
                 <TextView
                     android:id="@+id/pc_part_card_spec_name1"
@@ -66,23 +65,9 @@
         <TextView
             android:id="@+id/pc_part_card_price"
             style="@style/price_in_create_card"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/pc_part_card_btns"
             app:layout_constraintTop_toBottomOf="@+id/pc_part_card_img" />
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pc_part_card_btns"
-            style="@style/ConstraintLayout_btns_in_create_card"
-            app:layout_constraintLeft_toRightOf="@id/pc_part_card_price"
-            app:layout_constraintTop_toBottomOf="@+id/pc_part_card_specifications">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/pc_part_card_select_btn"
-                style="@style/btns_in_create_card"
-                app:layout_constraintWidth_max="320dp"
-                android:textSize="@dimen/buttonLarge"
-                android:layout_marginStart="8dp"
-                android:text="@string/btn_select"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

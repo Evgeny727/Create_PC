@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_searchFragment_to_buildsFragment"
             app:destination="@id/buildsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchComponentsFragment"
+            app:destination="@id/searchComponentsFragment" />
     </fragment>
 
     <fragment
@@ -70,6 +73,16 @@
             app:destination="@id/createFragment"
             app:popUpTo="@id/createFragment"
             app:popUpToInclusive="true"/>
+        <argument
+            android:name="part_type_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchComponentsFragment"
+        android:name="com.example.createpc.fragments.searchfragments.SearchComponentsFragment"
+        android:label="fragment_search_components"
+        tools:layout="@layout/fragment_search_components" >
         <argument
             android:name="part_type_id"
             app:argType="integer"
