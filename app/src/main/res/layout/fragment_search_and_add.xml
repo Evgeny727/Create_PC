@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/pc_part_card_item"/>
+        tools:listitem="@layout/pc_part_search_and_add_card_item"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/search_bar"

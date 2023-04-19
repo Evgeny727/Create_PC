@@ -37,7 +37,7 @@ public class SearchAndAddFragment extends Fragment {
     private EditText textInput;
 
     private enum DBTableName {CPU_TABLE, GPU_TABLE, MOTHERBOARD_TABLE, PSU_TABLE, RAM_TABLE,
-        CASE_TABLE, SSDM_TABLE, SSD2_TABLE, HDD_TABLE, CPU_COOLING_TABLE, CASE_COOLING_TABLE};
+        CASE_TABLE, SSDM_TABLE, SSD2_TABLE, HDD_TABLE, CPU_COOLING_TABLE, CASE_COOLING_TABLE}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +60,7 @@ public class SearchAndAddFragment extends Fragment {
         clearSearchText = fragmentSearchAndAddBinding.textInputEndIcon;
         textInput = fragmentSearchAndAddBinding.textInput;
         if (partType == -1) noResults.setVisibility(View.VISIBLE);
-        clearSearchText.setOnClickListener(v -> {
-            textInput.setText("");
-        });
+        clearSearchText.setOnClickListener(v -> textInput.setText(""));
         return view;
     }
 

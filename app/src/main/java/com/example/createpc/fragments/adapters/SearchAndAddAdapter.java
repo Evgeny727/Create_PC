@@ -13,7 +13,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
-import com.example.createpc.databinding.PcPartCardItemBinding;
 import com.example.createpc.databinding.PcPartSearchCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
@@ -129,7 +128,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_card_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_and_add_card_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
