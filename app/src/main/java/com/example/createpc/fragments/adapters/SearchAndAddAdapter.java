@@ -13,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
-import com.example.createpc.databinding.PcPartSearchCardItemBinding;
+import com.example.createpc.databinding.PcPartSearchAndAddCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
 import com.google.android.material.button.MaterialButton;
@@ -28,7 +28,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
     private final List<PcCardData> pcCardDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartSearchCardItemBinding binding;
+        private final PcPartSearchAndAddCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -46,7 +46,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartSearchCardItemBinding.bind(view);
+            binding = PcPartSearchAndAddCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
