@@ -41,16 +41,16 @@ public class CreateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentCreateBinding = FragmentCreateBinding.inflate(inflater, container, false);
         View view = fragmentCreateBinding.getRoot();
+        Fragment fragment = this;
 
         mRecyclerView = fragmentCreateBinding.recyclerViewInCreatePage;
-        mAdapter = new CreateAdapter(pcCardDataList, getActivity().getApplicationContext());
+        mAdapter = new CreateAdapter(pcCardDataList, fragment);
         mRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
         MaterialButton cancelButton = fragmentCreateBinding.cancelBtn;
         MaterialButton saveButton = fragmentCreateBinding.saveBtn;
-        Fragment fragment = this;
         cancelButton.setOnClickListener(v -> {
             //TODO: add functionality
             navigateToStart(fragment);

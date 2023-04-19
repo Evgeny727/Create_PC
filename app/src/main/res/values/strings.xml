@@ -108,6 +108,11 @@
     <string name="btn_edit">Edit</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_save">Save</string>
+    <string name="btn_select">Select</string>
+
+    <!-- Text in search page -->
+    <string name="no_results">No results</string>
+    <string name="search_hint">Component name</string>
 
     <!-- TODO: delete this string after creating fragments for this page -->
     <string name="hello_builds_fragment">Hello builds fragment</string>

@@ -1,6 +1,5 @@
 package com.example.createpc.fragments.adapters;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -16,20 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.PcPartCardItemBinding;
+import com.example.createpc.databinding.PcPartSearchCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
-import com.example.createpc.fragments.workshopfragments.CreateFragmentDirections;
+import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder> {
+public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapter.ViewHolder> {
     private final Fragment fragment;
+    private final int partType;
     private final List<PcCardData> pcCardDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartCardItemBinding binding;
+        private final PcPartSearchCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -43,12 +43,11 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         private final TextView specName5;
         private final TextView specValue5;
         private final TextView price;
-        private final MaterialButton deleteBtn;
-        private final MaterialButton addBtn;
+        private final MaterialButton selectBtn;
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartCardItemBinding.bind(view);
+            binding = PcPartSearchCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -62,8 +61,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
             specName5 = binding.pcPartCardSpecName5;
             specValue5 = binding.pcPartCardSpecValue5;
             price = binding.pcPartCardPrice;
-            deleteBtn = binding.pcPartCardDeleteBtn;
-            addBtn = binding.pcPartCardAddBtn;
+            selectBtn = binding.pcPartCardSelectBtn;
         }
 
         public TextView getHeader() {
@@ -118,23 +116,20 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
             return price;
         }
 
-        public MaterialButton getDeleteBtn() {
-            return deleteBtn;
-        }
-
-        public MaterialButton getAddBtn() {
-            return addBtn;
+        public MaterialButton getSelectBtn() {
+            return selectBtn;
         }
     }
 
-    public CreateAdapter(List<PcCardData> pcCardDataList, Fragment fragment) {
+    public SearchAndAddAdapter(List<PcCardData> pcCardDataList, int partType, Fragment fragment) {
         this.pcCardDataList = pcCardDataList;
+        this.partType = partType;
         this.fragment = fragment;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_card_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_card_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -168,13 +163,12 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         viewHolder.getSpecValue4().setText(specifications[3]);
         viewHolder.getSpecValue5().setText(specifications[4]);
         viewHolder.getPrice().setText(cardData.getStringPrice());
-        viewHolder.getDeleteBtn().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Placeholder for delete :)", Toast.LENGTH_SHORT).show();
-        });
-        viewHolder.getAddBtn().setOnClickListener(v -> {
-            CreateFragmentDirections.ActionCreateFragmentToSearchAndAddFragment action = CreateFragmentDirections.actionCreateFragmentToSearchAndAddFragment();
-            action.setPartTypeId(position);
-            NavHostFragment.findNavController(fragment).navigate(action);
+        viewHolder.getSelectBtn().setOnClickListener(v -> {
+            StaticBuildDataTemporaryStorage.setIsEmpty(false);
+            List<PcCardData> list = StaticBuildDataTemporaryStorage.getCardsList();
+            list.set(partType, cardData);
+            StaticBuildDataTemporaryStorage.setAllCards(list);
+            NavHostFragment.findNavController(fragment).navigate(R.id.action_searchAndAddFragment_to_createFragment);
         });
     }
 
