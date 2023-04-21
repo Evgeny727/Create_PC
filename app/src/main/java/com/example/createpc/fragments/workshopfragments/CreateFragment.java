@@ -78,7 +78,7 @@ public class CreateFragment extends Fragment {
             int j = i*5;
             String[] specNames5 = {specNames[j], specNames[j+1], specNames[j+2], specNames[j+3], specNames[j+4]};
             String[] specValues5 = {defaultSpecName, defaultSpecName, defaultSpecName, defaultSpecName, defaultSpecName};
-            pcCardDataList.add(new PcCardData(typeNames[i], "", "", 0, specNames5, specValues5));
+            pcCardDataList.add(new PcCardData(0, typeNames[i], "", "", 0, specNames5, specValues5));
         }
     }
 

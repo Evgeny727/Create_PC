@@ -2,6 +2,7 @@ package com.example.createpc.fragments.dataclasses;
 
 public class PcCardData {
     private static String currency_icon;
+    private int id;
     private String typeName;
     private String pcPartName;
     private String pathToImage;
@@ -11,6 +12,7 @@ public class PcCardData {
 
     //Default constructor
     public PcCardData() {
+        id = 0;
         typeName = "";
         pcPartName = "";
         pathToImage = "";
@@ -19,19 +21,9 @@ public class PcCardData {
         specificationValues = new String[5];
     }
 
-    //Constructor for pcPartCard
-    public PcCardData(String typeName, String pcPartName, String pathToImage, int price, String[] specificationNames, String[] specificationValues) {
+    public PcCardData(int id, String typeName, String pcPartName, String pathToImage, int price, String[] specificationNames, String[] specificationValues) {
+        this.id = id;
         this.typeName = typeName;
-        this.pcPartName = pcPartName;
-        this.pathToImage = pathToImage;
-        this.price = price;
-        this.specificationNames = specificationNames;
-        this.specificationValues = specificationValues;
-    }
-
-    //Constructor for pcBuildCard
-    public PcCardData(String pcPartName, String pathToImage, int price, String[] specificationNames, String[] specificationValues) {
-        this.typeName = "";
         this.pcPartName = pcPartName;
         this.pathToImage = pathToImage;
         this.price = price;
@@ -49,6 +41,14 @@ public class PcCardData {
 
     public static void setCurrency_icon(String currency_icon) {
         PcCardData.currency_icon = currency_icon;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTypeName() {

@@ -27,8 +27,6 @@ public class BuildsFragment extends Fragment {
 
     private String[] buildsName;
     private TextView noBuilds;
-    private enum DBTableName {CPU_TABLE, GPU_TABLE, MOTHERBOARD_TABLE, PSU_TABLE, RAM_TABLE,
-        CASE_TABLE, SSDM_TABLE, SSD2_TABLE, HDD_TABLE, CPU_COOLING_TABLE, CASE_COOLING_TABLE}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,5 @@
 package com.example.createpc.fragments.adapters;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,7 +28,6 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
     private final List<PcCardData> pcCardDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -48,7 +46,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartCardItemBinding.bind(view);
+            PcPartCardItemBinding binding = PcPartCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -149,12 +147,14 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
             }
             catch (IOException e) {
                 Log.d("TAGImg", "Image try to load");
                 e.printStackTrace();
             }
         }
+        else viewHolder.getImageView().setVisibility(View.INVISIBLE);
         String[] specifications = cardData.getSpecificationNames();
         viewHolder.getSpecName1().setText(specifications[0]);
         viewHolder.getSpecName2().setText(specifications[1]);

@@ -33,9 +33,6 @@ public class SearchComponentsFragment extends Fragment {
     private ImageView clearSearchText;
     private EditText textInput;
 
-    private enum DBTableName {CPU_TABLE, GPU_TABLE, MOTHERBOARD_TABLE, PSU_TABLE, RAM_TABLE,
-        CASE_TABLE, SSDM_TABLE, SSD2_TABLE, HDD_TABLE, CPU_COOLING_TABLE, CASE_COOLING_TABLE}
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
