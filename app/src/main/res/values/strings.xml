@@ -114,6 +114,6 @@
     <string name="no_results">No results</string>
     <string name="search_hint">Component name</string>
 
-    <!-- TODO: delete this string after creating fragments for this page -->
-    <string name="hello_builds_fragment">Hello builds fragment</string>
+    <!-- Text in builds page -->
+    <string name="no_builds">No builds yet</string>
 </resources>

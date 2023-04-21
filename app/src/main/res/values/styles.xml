@@ -102,6 +102,8 @@
     </style>
     <style name="specifications_in_create_card.Add">
         <item name="android:paddingLeft">1dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
     <style name="price_in_create_card">
         <item name="android:layout_width">90dp</item>

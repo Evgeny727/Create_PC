@@ -3,67 +3,54 @@ package com.example.createpc.fragments.buildsfragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.example.createpc.R;
 import com.example.createpc.databinding.FragmentBuildsBinding;
+import com.example.createpc.fragments.adapters.BuildsAdapter;
+import com.example.createpc.fragments.dataclasses.PcCardData;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BuildsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class BuildsFragment extends Fragment {
+    private final Fragment fragment = this;
+    private FragmentBuildsBinding fragmentBuildBinding;
+    private RecyclerView mRecyclerView;
+    private BuildsAdapter mAdapter;
+    private List<List<PcCardData>> pcCardDataList = new ArrayList<>();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public BuildsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BuildsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BuildsFragment newInstance(String param1, String param2) {
-        BuildsFragment fragment = new BuildsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private String[] buildsName;
+    private TextView noBuilds;
+    private enum DBTableName {CPU_TABLE, GPU_TABLE, MOTHERBOARD_TABLE, PSU_TABLE, RAM_TABLE,
+        CASE_TABLE, SSDM_TABLE, SSD2_TABLE, HDD_TABLE, CPU_COOLING_TABLE, CASE_COOLING_TABLE}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
-
-    private FragmentBuildsBinding fragmentBuildBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentBuildBinding = FragmentBuildsBinding.inflate(inflater, container, false);
         View view = fragmentBuildBinding.getRoot();
+        mRecyclerView = fragmentBuildBinding.recyclerViewInBuildPage;
+        noBuilds = fragmentBuildBinding.noBuildsTextview;
+
+        //TODO: realize fetching data from database
+        if (pcCardDataList.isEmpty()) noBuilds.setVisibility(View.VISIBLE);
+        else {
+            noBuilds.setVisibility(View.GONE);
+            mAdapter = new BuildsAdapter(pcCardDataList, buildsName, fragment);
+            mRecyclerView.setAdapter(mAdapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
+            mRecyclerView.setLayoutManager(layoutManager);
+        }
         return view;
     }
 
