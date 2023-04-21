@@ -105,30 +105,44 @@ public class SearchAndAddFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //TODO: realize search in database by component name
         textInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if ((charSequence.toString()).equals("")) clearSearchText.setVisibility(View.GONE);
-                else clearSearchText.setVisibility(View.VISIBLE);
-                //TODO: get from database list and set values in pcCardDataList
+                if ((charSequence.toString()).equals("")) {
+                    clearSearchText.setVisibility(View.GONE);
+                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType], null);
+                }
+                else {
+                    clearSearchText.setVisibility(View.VISIBLE);
+                    String inputText = charSequence.toString();
+                    inputText = parseInputText(inputText);
+                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "\'%" + inputText + "%\'", null);
+                    Log.d("Cursor", String.valueOf(cursor.getCount()) + " : " + inputText);
+                }
+                pcCardDataList.clear();
+                setPcCardDataList(cursor);
+                if (!pcCardDataList.isEmpty()) {
+                    noResults.setVisibility(View.GONE);
+                    mAdapter = new SearchAndAddAdapter(pcCardDataList, partType, fragment);
+                    mRecyclerView.setAdapter(mAdapter);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    noResults.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        if (pcCardDataList.size() == 0) noResults.setVisibility(View.VISIBLE);
-        else {
-            noResults.setVisibility(View.GONE);
-            mRecyclerView = fragmentSearchAndAddBinding.recyclerViewInSearchPage;
-            mAdapter = new SearchAndAddAdapter(pcCardDataList, partType, fragment);
-            mRecyclerView.setAdapter(mAdapter);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
-            mRecyclerView.setLayoutManager(layoutManager);
-        }
+    }
+
+    private String parseInputText(String inputText) {
+        return inputText.replaceAll("\\s+", "%");
     }
 
     @Override

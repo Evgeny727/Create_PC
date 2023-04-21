@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import com.example.createpc.databinding.ActivityMainBinding;
+import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -147,5 +148,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        PcCardData.setCurrency_icon(getString(R.string.currency_icon));
     }
 }

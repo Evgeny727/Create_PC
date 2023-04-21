@@ -70,7 +70,6 @@ public class CreateFragment extends Fragment {
 
     //Initialize data for pcPartCards
     private void initDataset() {
-        PcCardData.setCurrency_icon(getString(R.string.currency_icon));
         String[] typeNames = getResources().getStringArray(R.array.pc_part_type_names);
         String[] specNames = getResources().getStringArray(R.array.pc_part_spec_names);
         String defaultSpecName = getString(R.string.empty_param);

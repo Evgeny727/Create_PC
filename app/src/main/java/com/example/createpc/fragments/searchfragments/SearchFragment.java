@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +32,8 @@ public class SearchFragment extends Fragment {
         ConstraintLayout constraintLayout = fragmentSearchBinding.categoryLayout;
         for (int i = 0; i < constraintLayout.getChildCount(); i++) {
             final int position = i;
-            constraintLayout.getChildAt(i).setOnClickListener(v -> {
-                SearchFragmentDirections.ActionSearchFragmentToSearchComponentsFragment action = SearchFragmentDirections.actionSearchFragmentToSearchComponentsFragment();
-                action.setPartTypeId(position);
-                NavHostFragment.findNavController(fragment).navigate(R.id.action_searchFragment_to_searchComponentsFragment);
-            });
+            constraintLayout.getChildAt(i).setOnClickListener(v ->
+                    NavHostFragment.findNavController(fragment).navigate(SearchFragmentDirections.actionSearchFragmentToSearchComponentsFragment().setTypeId(position)));
         }
         return view;
     }
