@@ -143,6 +143,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         String path = cardData.getPathToImage();
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
+            imageView.setVisibility(View.VISIBLE);
             try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
