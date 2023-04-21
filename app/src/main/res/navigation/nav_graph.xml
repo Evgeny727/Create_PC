@@ -11,12 +11,6 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_startFragment_to_buildsFragment"
-            app:destination="@id/buildsFragment" />
-        <action
             android:id="@+id/action_startFragment_to_createFragment"
             app:destination="@id/createFragment" />
     </fragment>
@@ -27,12 +21,6 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_startFragment"
-            app:destination="@id/startFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_buildsFragment"
-            app:destination="@id/buildsFragment" />
-        <action
             android:id="@+id/action_searchFragment_to_searchComponentsFragment"
             app:destination="@id/searchComponentsFragment" />
     </fragment>
@@ -42,12 +30,6 @@
         android:name="com.example.createpc.fragments.buildsfragments.BuildsFragment"
         android:label="fragment_builds"
         tools:layout="@layout/fragment_builds" >
-        <action
-            android:id="@+id/action_buildsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_buildsFragment_to_startFragment"
-            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFragment"
