@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "pc_parts.db";
     private static final int SCHEMA = 1;
     public static final String[] TABLEs = {"cpu", "gpu", "motherboard", "psu",
-            "ram", "cooler", "case", "ssdm", "ssd2", "hdd", "fan"};
+            "ram", "cooler", "base", "ssdm", "ssd2", "hdd", "fan"};
     // column names
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
