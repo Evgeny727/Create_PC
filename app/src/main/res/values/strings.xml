@@ -34,11 +34,11 @@
         <item>Motherboard </item>
         <item>Power Supply </item>
         <item>RAM </item>
+        <item>Processor Cooler </item>
         <item>Case </item>
         <item>SSD drive(M.2) </item>
         <item>SSD drive(2.5") </item>
         <item>Hard drive </item>
-        <item>Processor Cooler </item>
         <item>Case fan </item>
     </string-array>
 

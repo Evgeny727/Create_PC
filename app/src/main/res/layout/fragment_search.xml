@@ -100,7 +100,7 @@
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/case_category"
+            app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
             app:layout_constraintTop_toBottomOf="@id/motherboard_category">
             <LinearLayout style="@style/LinearLayout_in_category_card">
                 <ImageView
@@ -114,7 +114,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/case_category"
+            android:id="@+id/cpu_cooling_category"
             style="@style/CardView_in_category_card"
             app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="15dp"
@@ -122,6 +122,26 @@
             app:layout_constraintLeft_toRightOf="@id/ram_category"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/psu_category">
+            <LinearLayout style="@style/LinearLayout_in_category_card">
+                <ImageView
+                    style="@style/img_in_category_card"
+                    android:src="@drawable/cpu_cooling_category_img"
+                    android:contentDescription="@string/contentDescription_category_img" />
+                <TextView
+                    style="@style/text_in_category_card"
+                    android:text="@string/cpu_cooling_category_name" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/case_category"
+            style="@style/CardView_in_category_card"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="2dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ssdM_category"
+            app:layout_constraintTop_toBottomOf="@id/ram_category">
             <LinearLayout style="@style/LinearLayout_in_category_card">
                 <ImageView
                     style="@style/img_in_category_card"
@@ -139,9 +159,9 @@
             app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/ssd2_category"
-            app:layout_constraintTop_toBottomOf="@id/ram_category">
+            app:layout_constraintLeft_toRightOf="@id/case_category"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cpu_cooling_category">
             <LinearLayout style="@style/LinearLayout_in_category_card">
                 <ImageView
                     style="@style/img_in_category_card"
@@ -159,8 +179,8 @@
             app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
-            app:layout_constraintLeft_toRightOf="@id/ssdM_category"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/hdd_category"
             app:layout_constraintTop_toBottomOf="@id/case_category">
             <LinearLayout style="@style/LinearLayout_in_category_card">
                 <ImageView
@@ -179,8 +199,8 @@
             app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
+            app:layout_constraintLeft_toRightOf="@id/ssd2_category"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ssdM_category">
             <LinearLayout style="@style/LinearLayout_in_category_card">
                 <ImageView
@@ -194,26 +214,6 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cpu_cooling_category"
-            style="@style/CardView_in_category_card"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="2dp"
-            app:layout_constraintLeft_toRightOf="@id/hdd_category"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ssd2_category">
-            <LinearLayout style="@style/LinearLayout_in_category_card">
-                <ImageView
-                    style="@style/img_in_category_card"
-                    android:src="@drawable/cpu_cooling_category_img"
-                    android:contentDescription="@string/contentDescription_category_img" />
-                <TextView
-                    style="@style/text_in_category_card"
-                    android:text="@string/cpu_cooling_category_name" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/case_cooling_category"
             style="@style/CardView_in_category_card"
             android:layout_marginBottom="16dp"
@@ -222,8 +222,8 @@
             app:cardElevation="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/cpu_cooling_category"
-            app:layout_constraintTop_toBottomOf="@id/hdd_category">
+            app:layout_constraintRight_toLeftOf="@id/hdd_category"
+            app:layout_constraintTop_toBottomOf="@id/ssd2_category">
 
             <LinearLayout style="@style/LinearLayout_in_category_card">
 
