@@ -9,15 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
-import com.example.createpc.databinding.PcPartCardItemBinding;
 import com.example.createpc.databinding.PcPartSearchCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
-import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
-import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
 import java.io.InputStream;

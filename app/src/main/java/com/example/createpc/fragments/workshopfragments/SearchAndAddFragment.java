@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,7 +119,6 @@ public class SearchAndAddFragment extends Fragment {
                     String inputText = charSequence.toString();
                     inputText = parseInputText(inputText);
                     cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "\'%" + inputText + "%\'", null);
-                    Log.d("Cursor", String.valueOf(cursor.getCount()) + " : " + inputText);
                 }
                 pcCardDataList.clear();
                 setPcCardDataList(cursor);

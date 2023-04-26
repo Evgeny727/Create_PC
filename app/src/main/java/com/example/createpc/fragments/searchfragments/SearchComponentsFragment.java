@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.FragmentSearchComponentsBinding;
-import com.example.createpc.fragments.adapters.SearchAndAddAdapter;
 import com.example.createpc.fragments.adapters.SearchComponentsAdapter;
 import com.example.createpc.fragments.dataclasses.DatabaseHelper;
 import com.example.createpc.fragments.dataclasses.PcCardData;
@@ -108,7 +106,6 @@ public class SearchComponentsFragment extends Fragment {
                     String inputText = charSequence.toString();
                     inputText = parseInputText(inputText);
                     cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "\'%" + inputText + "%\'", null);
-                    Log.d("Cursor", String.valueOf(cursor.getCount()) + " : " + inputText);
                 }
                 pcCardDataList.clear();
                 setPcCardDataList(cursor);

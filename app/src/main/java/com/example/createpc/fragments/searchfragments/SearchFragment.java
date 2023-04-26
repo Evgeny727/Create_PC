@@ -7,12 +7,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.createpc.R;
 import com.example.createpc.databinding.FragmentSearchBinding;
 
 public class SearchFragment extends Fragment {
