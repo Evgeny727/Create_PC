@@ -1,5 +1,7 @@
 package com.example.createpc.fragments.dataclasses;
 
+import android.util.Log;
+
 public class PcCardData {
     private static String currency_icon;
     private int id;
@@ -32,7 +34,11 @@ public class PcCardData {
     }
 
     public void setDefaultValues() {
-        new PcCardData();
+        this.id = 0;
+        this.pcPartName = "";
+        this.pathToImage = "";
+        this.price = 0;
+        this.specificationValues = new String[5];
     }
 
     public static String getCurrency_icon() {
