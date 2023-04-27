@@ -116,4 +116,13 @@
 
     <!-- Text in builds page -->
     <string name="no_builds">No builds yet</string>
+
+    <!-- Message if element already deleted -->
+    <string name="deleted">Element is already empty</string>
+
+    <!-- Delete element dialog fragment strings -->
+    <string name="dialog_header">Are you sure you want to delete</string>
+    <string name="dialog_warning">This action cannot be undone!</string>
+    <string name="dialog_btn_cancel">No (Cancel)</string>
+    <string name="dialog_btn_accept">Yes (Delete)</string>
 </resources>
