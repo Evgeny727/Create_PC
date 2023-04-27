@@ -1,6 +1,7 @@
 package com.example.createpc.fragments.adapters;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.PcPartCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
+import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
+import com.example.createpc.fragments.dialogs.DeleteElementDialogFragment;
+import com.example.createpc.fragments.workshopfragments.CreateFragment;
 import com.example.createpc.fragments.workshopfragments.CreateFragmentDirections;
 import com.google.android.material.button.MaterialButton;
 
@@ -43,6 +49,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         private final TextView price;
         private final MaterialButton deleteBtn;
         private final MaterialButton addBtn;
+        private boolean isDeleted = true;
 
         public ViewHolder(View view) {
             super(view);
@@ -123,6 +130,8 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         public MaterialButton getAddBtn() {
             return addBtn;
         }
+        public boolean isDeleted() { return isDeleted; }
+        public void setDeleted(boolean bool) { isDeleted = bool; }
     }
 
     public CreateAdapter(List<PcCardData> pcCardDataList, Fragment fragment) {
@@ -144,6 +153,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
             imageView.setVisibility(View.VISIBLE);
+            viewHolder.setDeleted(false);
             try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
@@ -170,7 +180,17 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         viewHolder.getSpecValue5().setText(specifications[4]);
         viewHolder.getPrice().setText(cardData.getStringPrice());
         viewHolder.getDeleteBtn().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Placeholder for delete :)", Toast.LENGTH_SHORT).show();
+            if (viewHolder.isDeleted()) {
+                Toast.makeText(v.getContext(), fragment.getString(R.string.deleted), Toast.LENGTH_SHORT).show();
+            }
+            else {
+                DeleteElementDialogFragment dialogFragment = new DeleteElementDialogFragment();
+                Bundle args = new Bundle();
+                args.putInt("position", position);
+                args.putString("name", cardData.getCardName());
+                dialogFragment.setArguments(args);
+                dialogFragment.show(fragment.getParentFragmentManager(), "delete");
+            }
         });
         viewHolder.getAddBtn().setOnClickListener(v -> {
             CreateFragmentDirections.ActionCreateFragmentToSearchAndAddFragment action = CreateFragmentDirections.actionCreateFragmentToSearchAndAddFragment();
