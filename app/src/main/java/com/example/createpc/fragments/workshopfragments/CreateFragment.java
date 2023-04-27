@@ -51,7 +51,6 @@ public class CreateFragment extends Fragment {
         MaterialButton cancelButton = fragmentCreateBinding.cancelBtn;
         MaterialButton saveButton = fragmentCreateBinding.saveBtn;
         cancelButton.setOnClickListener(v -> {
-            //TODO: add functionality
             navigateToStart(fragment);
         });
         saveButton.setOnClickListener(v -> {

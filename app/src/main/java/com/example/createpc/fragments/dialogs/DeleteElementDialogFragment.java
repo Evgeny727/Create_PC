@@ -5,14 +5,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,7 +17,6 @@ import com.example.createpc.R;
 import com.example.createpc.databinding.DialogFragmentDeleteElementBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
