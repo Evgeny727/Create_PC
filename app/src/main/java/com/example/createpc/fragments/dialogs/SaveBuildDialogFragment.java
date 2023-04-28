@@ -36,14 +36,6 @@ public class SaveBuildDialogFragment extends DialogFragment {
         return builder.setView(dialogFragmentSaveBuildBinding.getRoot()).create();
     }
 
-    public void onDismiss(@NonNull DialogInterface dialog) {
-        super.onDismiss(dialog);
-        NavController controller = NavHostFragment.findNavController(SaveBuildDialogFragment.this);
-        NavOptions options = new NavOptions(true, false, R.id.createFragment, true,
-                false, 0, 0, 0 , 0);
-        controller.navigate(R.id.createFragment, new Bundle(), options);
-    }
-
     public void onDestroyView() {
         super.onDestroyView();
         dialogFragmentSaveBuildBinding = null;

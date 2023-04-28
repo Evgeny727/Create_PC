@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,16 +32,16 @@ public class CreateFragment extends Fragment {
     private int build_id = -1;
     private final Fragment fragment = this;
     private String build_name = "";
-
     private boolean isNeedToSave = true;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getParentFragmentManager().setFragmentResultListener("NameKey", this, (requestKey, bundle) -> {
             build_name = bundle.getString("build_name");
-            build_id = bundle.getInt("build_id", -1);
+            //TODO: realize saving build into database
+            navigateToStart(fragment);
         });
-        if (build_id == -1) build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
+        build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
         if (build_id > 0) {
             OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
                 @Override
