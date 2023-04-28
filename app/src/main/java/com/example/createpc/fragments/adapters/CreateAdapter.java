@@ -11,17 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.PcPartCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
-import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
 import com.example.createpc.fragments.dialogs.DeleteElementDialogFragment;
-import com.example.createpc.fragments.workshopfragments.CreateFragment;
 import com.example.createpc.fragments.workshopfragments.CreateFragmentDirections;
 import com.google.android.material.button.MaterialButton;
 
