@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context=".fragments.buildsfragments.BuildsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_in_build_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/pc_part_card_item"/>
+        tools:listitem="@layout/pc_part_card_item" />
 
     <TextView
         android:id="@+id/no_builds_textview"

@@ -1,11 +1,15 @@
 package com.example.createpc.fragments.buildsfragments;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.createpc.databinding.FragmentBuildsBinding;
 import com.example.createpc.fragments.adapters.BuildsAdapter;
+import com.example.createpc.fragments.dataclasses.DatabaseBuildsHelper;
+import com.example.createpc.fragments.dataclasses.DatabaseHelper;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 
 import java.util.ArrayList;
@@ -23,14 +29,21 @@ public class BuildsFragment extends Fragment {
     private FragmentBuildsBinding fragmentBuildBinding;
     private RecyclerView mRecyclerView;
     private BuildsAdapter mAdapter;
-    private List<List<PcCardData>> pcCardDataList = new ArrayList<>();
-
-    private String[] buildsName;
     private TextView noBuilds;
+    private DatabaseBuildsHelper helper;
+    private SQLiteDatabase db;
+    private Cursor cursor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        helper = new DatabaseBuildsHelper(getActivity().getApplicationContext());
+        db = helper.getWritableDatabase();
+        getParentFragmentManager().setFragmentResultListener("BuildKey", this, (requestKey, bundle) -> {
+            int build_id = bundle.getInt("id");
+            db.delete(DatabaseBuildsHelper.TABLE, DatabaseBuildsHelper.COLUMN_ID + "=" + build_id, null);
+            db.close();
+        });
     }
 
     @Override
@@ -41,14 +54,15 @@ public class BuildsFragment extends Fragment {
         noBuilds = fragmentBuildBinding.noBuildsTextview;
 
         //TODO: realize fetching data from database
-        if (pcCardDataList.isEmpty()) noBuilds.setVisibility(View.VISIBLE);
-        else {
+        cursor = db.rawQuery("select * from " + DatabaseBuildsHelper.TABLE, null);
+        if (cursor.getCount() > 0) {
             noBuilds.setVisibility(View.GONE);
-            mAdapter = new BuildsAdapter(pcCardDataList, buildsName, fragment);
+            mAdapter = new BuildsAdapter(cursor, fragment);
             mRecyclerView.setAdapter(mAdapter);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
         }
+        else noBuilds.setVisibility(View.VISIBLE);
         return view;
     }
 
@@ -56,5 +70,13 @@ public class BuildsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         fragmentBuildBinding = null;
+        try {
+            mAdapter.closeDB();
+        }
+        catch (Exception e) {
+            Log.d("TAGAdapter", "Adapter doesn't exist");
+        }
+        db.close();
+        cursor.close();
     }
 }

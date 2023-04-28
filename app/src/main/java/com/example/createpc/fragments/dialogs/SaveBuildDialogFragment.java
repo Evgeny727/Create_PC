@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -21,8 +22,11 @@ public class SaveBuildDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         dialogFragmentSaveBuildBinding = DialogFragmentSaveBuildBinding.inflate(requireActivity().getLayoutInflater());
+        TextView header = dialogFragmentSaveBuildBinding.dialogHeader;
         EditText input = dialogFragmentSaveBuildBinding.inputName;
         int position = getArguments().getInt("id");
+        String name = getArguments().getString("name", "");
+        if (!name.equals("")) header.setText(name);
         builder.setView(dialogFragmentSaveBuildBinding.getRoot())
                 .setNegativeButton(R.string.dialog_save_btn_cancel, (dialog, id) -> SaveBuildDialogFragment.this.getDialog().cancel())
                 .setPositiveButton(R.string.dialog_save_btn_accept, (dialog, id) -> {

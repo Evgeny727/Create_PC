@@ -1,31 +1,40 @@
 package com.example.createpc.fragments.adapters;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.PcPartCardItemBinding;
+import com.example.createpc.fragments.buildsfragments.BuildsFragmentDirections;
+import com.example.createpc.fragments.dataclasses.DatabaseHelper;
 import com.example.createpc.fragments.dataclasses.PcCardData;
+import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
+import com.example.createpc.fragments.dialogs.DeleteBuildDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder> {
     private final Fragment fragment;
-    private final List<List<PcCardData>> pcCardDataList;
-
-    private final String[] buildsName;
+    private final Cursor cursor;
+    private final DatabaseHelper helper;
+    private final SQLiteDatabase db;
+    private Cursor cursorDB;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final PcPartCardItemBinding binding;
@@ -126,10 +135,12 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         }
     }
 
-    public BuildsAdapter(List<List<PcCardData>> pcCardDataList, String[] buildsName, Fragment fragment) {
-        this.pcCardDataList = pcCardDataList;
-        this.buildsName = buildsName;
+    public BuildsAdapter(Cursor cursor, Fragment fragment) {
+        this.cursor = cursor;
         this.fragment = fragment;
+        helper = new DatabaseHelper(fragment.getActivity().getApplicationContext());
+        helper.create_db();
+        db = helper.open();
     }
 
     @Override
@@ -140,11 +151,20 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        List<PcCardData> cardData = pcCardDataList.get(position);
-        viewHolder.getHeader().setText(buildsName[position]);
-        String path = cardData.get(6).getPathToImage();
+        cursor.moveToPosition(position);
+        String name = cursor.getString(1);
+        if (name.equals("")) name = fragment.getString(R.string.build_name) + position;
+        viewHolder.getHeader().setText(name);
+        int currentId = cursor.getInt(8);
+        String path = "";
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select image from base where _id=" + currentId, null);
+            boolean b = cursorDB.moveToFirst();
+            path = cursorDB.getString(0);
+        }
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
+            imageView.setVisibility(View.VISIBLE);
             try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
@@ -155,39 +175,103 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
                 e.printStackTrace();
             }
         }
-        viewHolder.getSpecName1().setText(cardData.get(0).getTypeName());
-        viewHolder.getSpecName2().setText(cardData.get(1).getTypeName());
-        viewHolder.getSpecName3().setText(cardData.get(2).getTypeName());
-        viewHolder.getSpecName4().setText(cardData.get(4).getTypeName());
-        viewHolder.getSpecName5().setText(cardData.get(3).getTypeName());
+        else viewHolder.getImageView().setVisibility(View.INVISIBLE);
+        String[] specNames = fragment.getResources().getStringArray(R.array.pc_build_spec_names);
+        viewHolder.getSpecName1().setText(specNames[0]);
+        viewHolder.getSpecName2().setText(specNames[1]);
+        viewHolder.getSpecName3().setText(specNames[2]);
+        viewHolder.getSpecName4().setText(specNames[3]);
+        viewHolder.getSpecName5().setText(specNames[4]);
 
-        viewHolder.getSpecValue1().setText(cardData.get(0).getPcPartName());
-        viewHolder.getSpecValue2().setText(cardData.get(1).getPcPartName());
-        viewHolder.getSpecValue3().setText(cardData.get(2).getPcPartName());
-        String[] values = cardData.get(4).getSpecificationValues();
-        String value = values[1] + " " + values[0];
-        viewHolder.getSpecValue4().setText(value);
-        viewHolder.getSpecValue5().setText(cardData.get(3).getSpecificationValues()[0]);
-        int price = 0;
-        for (PcCardData card:cardData) {
-            price += card.getPrice();
+        String empty_param = fragment.getString(R.string.empty_param);
+        currentId = cursor.getInt(2);
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select name from cpu where _id=" + currentId, null);
+            cursorDB.moveToFirst();
+            viewHolder.getSpecValue1().setText(cursorDB.getString(0));
         }
-        String stringPrice = price + " " + fragment.getResources().getString(R.string.currency_icon);
+        else viewHolder.getSpecValue1().setText(empty_param);
+        currentId = cursor.getInt(3);
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select name from gpu where _id=" + currentId, null);
+            cursorDB.moveToFirst();
+            viewHolder.getSpecValue2().setText(cursorDB.getString(0));
+        }
+        else viewHolder.getSpecValue2().setText(empty_param);
+        currentId = cursor.getInt(4);
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select param2 from motherboard where _id=" + currentId, null);
+            cursorDB.moveToFirst();
+            viewHolder.getSpecValue3().setText(cursorDB.getString(0));
+        }
+        else viewHolder.getSpecValue3().setText(empty_param);
+        currentId = cursor.getInt(6);
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select param1 from ram where _id=" + currentId, null);
+            cursorDB.moveToFirst();
+            viewHolder.getSpecValue4().setText(cursorDB.getString(0));
+        }
+        else viewHolder.getSpecValue4().setText(empty_param);
+        currentId = cursor.getInt(5);
+        if (currentId > 0) {
+            cursorDB = db.rawQuery("select name from psu where _id=" + currentId, null);
+            cursorDB.moveToFirst();
+            viewHolder.getSpecValue5().setText(cursorDB.getString(0));
+        }
+        else viewHolder.getSpecValue5().setText(empty_param);
+
+        int price = 0;
+        for (int i = 0; i < 11; i++) {
+            currentId = cursor.getInt(i+2);
+            if (currentId > 0) {
+                cursorDB = db.rawQuery("select price from " + DatabaseHelper.TABLEs[i] + " where _id=" + currentId, null);
+                cursorDB.moveToFirst();
+                price += cursorDB.getInt(0);
+            }
+            else price += 0;
+        }
+        String stringPrice = price + " " + fragment.getString(R.string.currency_icon);
         viewHolder.getPrice().setText(stringPrice);
         viewHolder.getDeleteBtn().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Placeholder for delete :)", Toast.LENGTH_SHORT).show();
+            DeleteBuildDialogFragment dialogFragment = new DeleteBuildDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", cursor.getInt(0));
+            args.putString("name", viewHolder.getHeader().getText().toString());
+            dialogFragment.setArguments(args);
+            dialogFragment.show(fragment.getParentFragmentManager(), "delete");
         });
         viewHolder.getEditBtn().setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Placeholder for edit :)", Toast.LENGTH_SHORT).show();
-            // BuildsFragmentDirections.ActionBuildsFragmentToCreateFragment action = BuildsFragmentDirections.actionBuildsFragmentToCreateFragment();
-            // action.setFragmentNameFrom("builds");
-            // StaticBuildDataTemporaryStorage.setAllCards(cardData);
-            // NavHostFragment.findNavController(fragment).navigate(action);
+             BuildsFragmentDirections.ActionBuildsFragmentToCreateFragment action = BuildsFragmentDirections.actionBuildsFragmentToCreateFragment();
+             action.setBuildId(cursor.getInt(0));
+             action.setBuildName(viewHolder.getHeader().getText().toString());
+             List<PcCardData> list = new ArrayList<>();
+             String[] typeNames = fragment.getResources().getStringArray(R.array.pc_part_type_names);
+             String[] specNames5 = fragment.getResources().getStringArray(R.array.pc_part_spec_names);
+             for (int i = 0; i < 11; i++) {
+                 int id = cursor.getInt(i+2);
+                 if (id > 0) {
+                     cursorDB = db.rawQuery("select * from " + DatabaseHelper.TABLEs[i] + " where _id=" + cursor.getInt(i+2), null);
+                     cursorDB.moveToFirst();
+                     String[] specValues = {cursorDB.getString(4), cursorDB.getString(5), cursorDB.getString(6), cursorDB.getString(7), cursorDB.getString(8)};
+                     list.add(new PcCardData(cursorDB.getInt(0), typeNames[i], cursorDB.getString(1), cursorDB.getString(2), cursorDB.getInt(3), specNames5, specValues));
+                 }
+                 else {
+                     String[] specValues = {empty_param, empty_param, empty_param, empty_param, empty_param};
+                     list.add(new PcCardData(0, typeNames[i], "", "", 0, specNames5, specValues));
+                 }
+             }
+             StaticBuildDataTemporaryStorage.setAllCards(list);
+             NavHostFragment.findNavController(fragment).navigate(action);
         });
     }
 
     @Override
     public int getItemCount() {
-        return pcCardDataList.size();
+        return cursor.getCount();
+    }
+
+    public void closeDB() {
+        db.close();
+        cursorDB.close();
     }
 }

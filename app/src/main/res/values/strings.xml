@@ -140,4 +140,6 @@
     <string name="dialog_save_btn_accept">Done</string>
     <string name="dialog_save_header">Name</string>
     <string name="dialog_save_hint">Enter a name here</string>
+
+    <string name="build_name">Build</string>
 </resources>

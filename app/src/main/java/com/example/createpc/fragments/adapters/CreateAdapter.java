@@ -18,6 +18,7 @@ import com.example.createpc.R;
 import com.example.createpc.databinding.PcPartCardItemBinding;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dialogs.DeleteElementDialogFragment;
+import com.example.createpc.fragments.workshopfragments.CreateFragment;
 import com.example.createpc.fragments.workshopfragments.CreateFragmentDirections;
 import com.google.android.material.button.MaterialButton;
 
@@ -180,6 +181,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
                 Toast.makeText(v.getContext(), fragment.getString(R.string.deleted), Toast.LENGTH_SHORT).show();
             }
             else {
+                CreateFragment.isNeedToSaveId = true;
                 DeleteElementDialogFragment dialogFragment = new DeleteElementDialogFragment();
                 Bundle args = new Bundle();
                 args.putInt("position", position);
@@ -189,6 +191,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
             }
         });
         viewHolder.getAddBtn().setOnClickListener(v -> {
+            CreateFragment.isNeedToSaveId = true;
             CreateFragmentDirections.ActionCreateFragmentToSearchAndAddFragment action = CreateFragmentDirections.actionCreateFragmentToSearchAndAddFragment();
             action.setPartTypeId(position);
             NavHostFragment.findNavController(fragment).navigate(action);

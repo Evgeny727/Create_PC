@@ -30,6 +30,9 @@
         android:name="com.example.createpc.fragments.buildsfragments.BuildsFragment"
         android:label="fragment_builds"
         tools:layout="@layout/fragment_builds" >
+        <action
+            android:id="@+id/action_buildsFragment_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFragment"
@@ -44,6 +47,19 @@
         <action
             android:id="@+id/action_createFragment_to_searchAndAddFragment"
             app:destination="@id/searchAndAddFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_buildsFragment"
+            app:destination="@id/buildsFragment"
+            app:popUpTo="@id/buildsFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="build_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="build_name"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
     <fragment
         android:id="@+id/searchAndAddFragment"

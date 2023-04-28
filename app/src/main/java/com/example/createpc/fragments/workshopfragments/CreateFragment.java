@@ -1,5 +1,7 @@
 package com.example.createpc.fragments.workshopfragments;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -8,7 +10,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.createpc.R;
 import com.example.createpc.databinding.FragmentCreateBinding;
 import com.example.createpc.fragments.adapters.CreateAdapter;
+import com.example.createpc.fragments.dataclasses.DatabaseBuildsHelper;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
 import com.example.createpc.fragments.dialogs.SaveBuildDialogFragment;
@@ -29,19 +31,41 @@ public class CreateFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CreateAdapter mAdapter;
     private List<PcCardData> pcCardDataList = new ArrayList<>();
-    private int build_id = -1;
+    private static int build_id = -1;
     private final Fragment fragment = this;
     private String build_name = "";
     private boolean isNeedToSave = true;
+    public static boolean isNeedToSaveId = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getParentFragmentManager().setFragmentResultListener("NameKey", this, (requestKey, bundle) -> {
             build_name = bundle.getString("build_name");
-            //TODO: realize saving build into database
+            DatabaseBuildsHelper databaseBuildsHelper = new DatabaseBuildsHelper(getActivity().getApplicationContext());
+            SQLiteDatabase db = databaseBuildsHelper.getWritableDatabase();
+            ContentValues cv = new ContentValues();
+            cv.put(DatabaseBuildsHelper.COLUMN_NAME, build_name);
+            cv.put(DatabaseBuildsHelper.COLUMN_CPU, pcCardDataList.get(0).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_GPU, pcCardDataList.get(1).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_MOTHERBOARD, pcCardDataList.get(2).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_PSU, pcCardDataList.get(3).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_RAM, pcCardDataList.get(4).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_COOLER, pcCardDataList.get(5).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_CASE, pcCardDataList.get(6).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_SSDM, pcCardDataList.get(7).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_SSD2, pcCardDataList.get(8).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_HDD, pcCardDataList.get(9).getId());
+            cv.put(DatabaseBuildsHelper.COLUMN_FAN, pcCardDataList.get(10).getId());
+            if (build_id > 0) {
+                db.update(DatabaseBuildsHelper.TABLE, cv, DatabaseBuildsHelper.COLUMN_ID + "=" + build_id, null);
+            }
+            else {
+                db.insert(DatabaseBuildsHelper.TABLE, null, cv);
+            }
+            db.close();
             navigateToStart(fragment);
         });
-        build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
+        if (!isNeedToSaveId) build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
         if (build_id > 0) {
             OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
                 @Override
@@ -50,6 +74,7 @@ public class CreateFragment extends Fragment {
                 }
             };
             requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+            build_name = CreateFragmentArgs.fromBundle(getArguments()).getBuildName();
             pcCardDataList = StaticBuildDataTemporaryStorage.getCardsList();
         }
         else {
@@ -71,15 +96,17 @@ public class CreateFragment extends Fragment {
 
         MaterialButton cancelButton = fragmentCreateBinding.cancelBtn;
         MaterialButton saveButton = fragmentCreateBinding.saveBtn;
-        cancelButton.setOnClickListener(v -> {
-            navigateToStart(fragment);
-        });
+        cancelButton.setOnClickListener(v -> navigateToStart(fragment));
         saveButton.setOnClickListener(v -> {
-            SaveBuildDialogFragment dialogFragment = new SaveBuildDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("id", build_id);
-            dialogFragment.setArguments(args);
-            dialogFragment.show(fragment.getParentFragmentManager(), "save");
+            if (!StaticBuildDataTemporaryStorage.isIsEmpty()) {
+                SaveBuildDialogFragment dialogFragment = new SaveBuildDialogFragment();
+                Bundle args = new Bundle();
+                args.putInt("id", build_id);
+                if (!build_name.equals("")) args.putString("name", build_name);
+                dialogFragment.setArguments(args);
+                dialogFragment.show(fragment.getParentFragmentManager(), "save");
+            }
+            else navigateToStart(fragment);
         });
         return view;
     }
