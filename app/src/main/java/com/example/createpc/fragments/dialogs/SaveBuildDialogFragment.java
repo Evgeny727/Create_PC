@@ -22,11 +22,10 @@ public class SaveBuildDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         dialogFragmentSaveBuildBinding = DialogFragmentSaveBuildBinding.inflate(requireActivity().getLayoutInflater());
-        TextView header = dialogFragmentSaveBuildBinding.dialogHeader;
         EditText input = dialogFragmentSaveBuildBinding.inputName;
         int position = getArguments().getInt("id");
         String name = getArguments().getString("name", "");
-        if (!name.equals("")) header.setText(name);
+        if (!name.equals("")) input.setText(name);
         builder.setView(dialogFragmentSaveBuildBinding.getRoot())
                 .setNegativeButton(R.string.dialog_save_btn_cancel, (dialog, id) -> SaveBuildDialogFragment.this.getDialog().cancel())
                 .setPositiveButton(R.string.dialog_save_btn_accept, (dialog, id) -> {
