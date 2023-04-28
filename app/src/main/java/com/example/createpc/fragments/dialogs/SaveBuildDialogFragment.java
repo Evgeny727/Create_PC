@@ -2,11 +2,9 @@ package com.example.createpc.fragments.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -16,10 +14,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.createpc.R;
 import com.example.createpc.databinding.DialogFragmentSaveBuildBinding;
-import com.example.createpc.fragments.dataclasses.PcCardData;
-import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
-
-import java.util.List;
 
 public class SaveBuildDialogFragment extends DialogFragment {
     private DialogFragmentSaveBuildBinding dialogFragmentSaveBuildBinding;
