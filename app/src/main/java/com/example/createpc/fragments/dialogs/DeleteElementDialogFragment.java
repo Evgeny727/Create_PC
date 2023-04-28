@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,9 +35,7 @@ public class DeleteElementDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.dialog_btn_accept, (dialog, id) -> {
                     List<PcCardData> list = StaticBuildDataTemporaryStorage.getCardsList();
                     PcCardData cardData1 = list.get(position);
-                    Log.d("Change data", cardData1.getCardName());
                     cardData1.setDefaultValues();
-                    Log.d("Change data", cardData1.getCardName());
                     list.set(position, cardData1);
                     StaticBuildDataTemporaryStorage.setAllCards(list);
                     DeleteElementDialogFragment.this.getDialog().dismiss();
