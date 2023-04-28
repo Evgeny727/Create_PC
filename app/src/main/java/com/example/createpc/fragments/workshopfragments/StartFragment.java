@@ -28,7 +28,13 @@ public class StartFragment extends Fragment {
         View view = fragmentStartBinding.getRoot();
         MaterialButton materialButton = fragmentStartBinding.createBtn;
         Fragment fragment = this;
-        materialButton.setOnClickListener(view1 -> NavHostFragment.findNavController(fragment).navigate(R.id.action_startFragment_to_createFragment));
+        materialButton.setOnClickListener(view1 -> {
+            StartFragmentDirections.ActionStartFragmentToCreateFragment action = StartFragmentDirections.actionStartFragmentToCreateFragment();
+            action.setBuildId(-1);
+            action.setBuildName("");
+            CreateFragment.isNeedToSaveId = false;
+            NavHostFragment.findNavController(fragment).navigate(action);
+        });
         return view;
     }
 

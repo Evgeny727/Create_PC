@@ -22,6 +22,7 @@ import com.example.createpc.fragments.dataclasses.DatabaseHelper;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
 import com.example.createpc.fragments.dialogs.DeleteBuildDialogFragment;
+import com.example.createpc.fragments.workshopfragments.CreateFragment;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
@@ -232,17 +233,19 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         }
         String stringPrice = price + " " + fragment.getString(R.string.currency_icon);
         viewHolder.getPrice().setText(stringPrice);
+        int build_id = cursor.getInt(0);
         viewHolder.getDeleteBtn().setOnClickListener(v -> {
             DeleteBuildDialogFragment dialogFragment = new DeleteBuildDialogFragment();
             Bundle args = new Bundle();
-            args.putInt("id", cursor.getInt(0));
+            args.putInt("id", build_id);
             args.putString("name", viewHolder.getHeader().getText().toString());
             dialogFragment.setArguments(args);
             dialogFragment.show(fragment.getParentFragmentManager(), "delete");
         });
         viewHolder.getEditBtn().setOnClickListener(v -> {
+            CreateFragment.isNeedToSaveId = false;
              BuildsFragmentDirections.ActionBuildsFragmentToCreateFragment action = BuildsFragmentDirections.actionBuildsFragmentToCreateFragment();
-             action.setBuildId(cursor.getInt(0));
+             action.setBuildId(build_id);
              action.setBuildName(viewHolder.getHeader().getText().toString());
              List<PcCardData> list = new ArrayList<>();
              String[] typeNames = fragment.getResources().getStringArray(R.array.pc_part_type_names);
@@ -250,7 +253,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
              for (int i = 0; i < 11; i++) {
                  int id = cursor.getInt(i+2);
                  if (id > 0) {
-                     cursorDB = db.rawQuery("select * from " + DatabaseHelper.TABLEs[i] + " where _id=" + cursor.getInt(i+2), null);
+                     cursorDB = db.rawQuery("select * from " + DatabaseHelper.TABLEs[i] + " where _id=" + id, null);
                      cursorDB.moveToFirst();
                      String[] specValues = {cursorDB.getString(4), cursorDB.getString(5), cursorDB.getString(6), cursorDB.getString(7), cursorDB.getString(8)};
                      list.add(new PcCardData(cursorDB.getInt(0), typeNames[i], cursorDB.getString(1), cursorDB.getString(2), cursorDB.getInt(3), specNames5, specValues));
@@ -261,6 +264,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
                  }
              }
              StaticBuildDataTemporaryStorage.setAllCards(list);
+             list.clear();
              NavHostFragment.findNavController(fragment).navigate(action);
         });
     }

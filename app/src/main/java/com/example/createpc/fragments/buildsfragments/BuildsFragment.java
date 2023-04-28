@@ -42,7 +42,6 @@ public class BuildsFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("BuildKey", this, (requestKey, bundle) -> {
             int build_id = bundle.getInt("id");
             db.delete(DatabaseBuildsHelper.TABLE, DatabaseBuildsHelper.COLUMN_ID + "=" + build_id, null);
-            db.close();
         });
     }
 
@@ -53,7 +52,6 @@ public class BuildsFragment extends Fragment {
         mRecyclerView = fragmentBuildBinding.recyclerViewInBuildPage;
         noBuilds = fragmentBuildBinding.noBuildsTextview;
 
-        //TODO: realize fetching data from database
         cursor = db.rawQuery("select * from " + DatabaseBuildsHelper.TABLE, null);
         if (cursor.getCount() > 0) {
             noBuilds.setVisibility(View.GONE);

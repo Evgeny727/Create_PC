@@ -33,7 +33,7 @@ public class CreateFragment extends Fragment {
     private List<PcCardData> pcCardDataList = new ArrayList<>();
     private static int build_id = -1;
     private final Fragment fragment = this;
-    private String build_name = "";
+    private static String build_name = "";
     private boolean isNeedToSave = true;
     public static boolean isNeedToSaveId = false;
     @Override
@@ -65,7 +65,10 @@ public class CreateFragment extends Fragment {
             db.close();
             navigateToStart(fragment);
         });
-        if (!isNeedToSaveId) build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
+        if (!isNeedToSaveId) {
+            build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
+            build_name = CreateFragmentArgs.fromBundle(getArguments()).getBuildName();
+        }
         if (build_id > 0) {
             OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
                 @Override
@@ -74,7 +77,6 @@ public class CreateFragment extends Fragment {
                 }
             };
             requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
-            build_name = CreateFragmentArgs.fromBundle(getArguments()).getBuildName();
             pcCardDataList = StaticBuildDataTemporaryStorage.getCardsList();
         }
         else {

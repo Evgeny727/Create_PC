@@ -22,7 +22,7 @@ public class DeleteBuildDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         dialogFragmentDeleteElementBinding = DialogFragmentDeleteElementBinding.inflate(requireActivity().getLayoutInflater());
         TextView header = dialogFragmentDeleteElementBinding.dialogHeader;
-        int position = getArguments().getInt("position");
+        int position = getArguments().getInt("id");
         String name = getArguments().getString("name");
         String title = getString(R.string.dialog_header) + " " + name + "?";
         header.setText(title);
