@@ -32,12 +32,6 @@ public class SaveBuildDialogFragment extends DialogFragment {
         builder.setView(dialogFragmentSaveBuildBinding.getRoot())
                 .setNegativeButton(R.string.dialog_save_btn_cancel, (dialog, id) -> SaveBuildDialogFragment.this.getDialog().cancel())
                 .setPositiveButton(R.string.dialog_save_btn_accept, (dialog, id) -> {
-                    List<PcCardData> list = StaticBuildDataTemporaryStorage.getCardsList();
-                    //TODO: realize saving data into database
-//                    PcCardData cardData1 = list.get(position);
-//                    cardData1.setDefaultValues();
-//                    list.set(position, cardData1);
-//                    StaticBuildDataTemporaryStorage.setAllCards(list);
                     String result = input.getText().toString();
                     Bundle bundle = new Bundle();
                     bundle.putString("build_name", result);
