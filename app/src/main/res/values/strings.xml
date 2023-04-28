@@ -101,6 +101,15 @@
         <item>Illumination: </item>
     </string-array>
 
+    <!-- Specifications of computer builds -->
+    <string-array name="pc_build_spec_names">
+        <item>Processor </item>
+        <item>Graphics card </item>
+        <item>Motherboard </item>
+        <item>RAM </item>
+        <item>Power Supply </item>
+    </string-array>
+
     <string name="empty_param">-</string>
     <string name="currency_icon">\u20bd</string>
 
@@ -125,4 +134,10 @@
     <string name="dialog_warning">This action cannot be undone!</string>
     <string name="dialog_btn_cancel">No (Cancel)</string>
     <string name="dialog_btn_accept">Yes (Delete)</string>
+
+    <!-- Save build dialog fragment strings -->
+    <string name="dialog_save_btn_cancel">Cancel</string>
+    <string name="dialog_save_btn_accept">Done</string>
+    <string name="dialog_save_header">Name</string>
+    <string name="dialog_save_hint">Enter a name here</string>
 </resources>

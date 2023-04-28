@@ -2,6 +2,7 @@ package com.example.createpc.fragments.workshopfragments;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.example.createpc.databinding.FragmentCreateBinding;
 import com.example.createpc.fragments.adapters.CreateAdapter;
 import com.example.createpc.fragments.dataclasses.PcCardData;
 import com.example.createpc.fragments.dataclasses.StaticBuildDataTemporaryStorage;
+import com.example.createpc.fragments.dialogs.SaveBuildDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -26,21 +28,39 @@ public class CreateFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CreateAdapter mAdapter;
     private List<PcCardData> pcCardDataList = new ArrayList<>();
+    private int build_id = -1;
+    private final Fragment fragment = this;
+    private String build_name = "";
 
     private boolean isNeedToSave = true;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Initialize default data if no saved data
-        if(StaticBuildDataTemporaryStorage.isIsEmpty()) initDataset();
-        else pcCardDataList = StaticBuildDataTemporaryStorage.getCardsList();
+        getParentFragmentManager().setFragmentResultListener("NameKey", this, (requestKey, bundle) -> {
+            build_name = bundle.getString("build_name");
+            build_id = bundle.getInt("build_id", -1);
+        });
+        if (build_id == -1) build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
+        if (build_id > 0) {
+            OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    navigateToStart(fragment);
+                }
+            };
+            requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+            pcCardDataList = StaticBuildDataTemporaryStorage.getCardsList();
+        }
+        else {
+            if(StaticBuildDataTemporaryStorage.isIsEmpty()) initDataset(); //Initialize default data if no saved data
+            else pcCardDataList = StaticBuildDataTemporaryStorage.getCardsList();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentCreateBinding = FragmentCreateBinding.inflate(inflater, container, false);
         View view = fragmentCreateBinding.getRoot();
-        Fragment fragment = this;
 
         mRecyclerView = fragmentCreateBinding.recyclerViewInCreatePage;
         mAdapter = new CreateAdapter(pcCardDataList, fragment);
@@ -54,8 +74,11 @@ public class CreateFragment extends Fragment {
             navigateToStart(fragment);
         });
         saveButton.setOnClickListener(v -> {
-            //TODO: add functionality
-            navigateToStart(fragment);
+            SaveBuildDialogFragment dialogFragment = new SaveBuildDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", build_id);
+            dialogFragment.setArguments(args);
+            dialogFragment.show(fragment.getParentFragmentManager(), "save");
         });
         return view;
     }
@@ -63,7 +86,12 @@ public class CreateFragment extends Fragment {
     private void navigateToStart(Fragment fragment) {
         if (!StaticBuildDataTemporaryStorage.isIsEmpty()) StaticBuildDataTemporaryStorage.clearAll();
         isNeedToSave = false;
-        NavHostFragment.findNavController(fragment).navigate(R.id.action_createFragment_to_startFragment);
+        if (build_id > 0) {
+            NavHostFragment.findNavController(fragment).navigate(R.id.action_createFragment_to_buildsFragment);
+        }
+        else {
+            NavHostFragment.findNavController(fragment).navigate(R.id.action_createFragment_to_startFragment);
+        }
     }
 
     //Initialize data for pcPartCards
