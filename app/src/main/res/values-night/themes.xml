@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/orange_300</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
+        <item name="android:statusBarColor">?android:attr/colorBackground</item>
         <!-- Customize your theme here. -->
         <!-- Surface color. -->
         <item name="colorSurface">@color/blue_gray_900</item>
