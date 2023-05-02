@@ -156,6 +156,9 @@ public class MainActivity extends AppCompatActivity {
         //Listener for app navigation
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemID = item.getItemId();
+            while (navController.popBackStack()) {
+                navController.popBackStack();
+            }
             if (itemID == R.id.page_create) {
                 if (!Objects.equals(navController.getCurrentDestination(), navController.findDestination(R.id.startFragment))) {
                     item.setChecked(true);
