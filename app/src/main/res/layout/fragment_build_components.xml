@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="40dp"
         style="@style/Widget.Material3.Toolbar"
         android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,12 +21,13 @@
 
         <ImageButton
             android:id="@+id/back_btn"
-            android:layout_width="64dp"
+            android:layout_width="44dp"
             android:layout_height="0dp"
             android:background="@null"
             android:contentDescription="@string/contentDescription_back_img"
             android:scaleType="fitStart"
-            android:scaleY="0.8"
+            android:scaleX="0.8"
+            android:scaleY="0.7"
             android:src="@drawable/ic_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/price"
