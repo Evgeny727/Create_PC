@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -144,6 +145,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         db = helper.open();
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_card_item, viewGroup, false);
@@ -151,7 +153,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         cursor.moveToPosition(position);
         String name = cursor.getString(1);
         if (name.equals("")) name = fragment.getString(R.string.build_name) + position;
@@ -160,7 +162,6 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         String path = "";
         if (currentId > 0) {
             cursorDB = db.rawQuery("select image from base where _id=" + currentId, null);
-            boolean b = cursorDB.moveToFirst();
             path = cursorDB.getString(0);
         }
         if (!path.equals("")) {
@@ -277,5 +278,6 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
     public void closeDB() {
         db.close();
         cursorDB.close();
+        cursor.close();
     }
 }
