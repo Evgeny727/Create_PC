@@ -29,8 +29,8 @@
     <string name="deleted">Элемент уже пуст</string>
     <string name="dialog_header">Вы уверены, что хотите удалить</string>
     <string name="dialog_warning">Отменить это действие невозможно!</string>
-    <string name="dialog_btn_cancel">Нет (Отменить)</string>
-    <string name="dialog_btn_accept">Да (Удалить)</string>
+    <string name="dialog_btn_cancel">Отменить</string>
+    <string name="dialog_btn_accept">Удалить</string>
     <string name="dialog_save_btn_cancel">Отменить</string>
     <string name="dialog_save_btn_accept">Готово</string>
     <string name="dialog_save_header">Название</string>
