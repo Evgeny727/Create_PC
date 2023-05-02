@@ -276,20 +276,6 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
             action.setId(build_id);
             NavHostFragment.findNavController(fragment).navigate(action);
         });
-//        viewHolder.getHeader().setOnClickListener(v -> {
-//            BuildsFragmentDirections.ActionBuildsFragmentToBuildComponentsFragment action = BuildsFragmentDirections.actionBuildsFragmentToBuildComponentsFragment();
-//            action.setName(viewHolder.getHeader().getText().toString());
-//            action.setPrice(viewHolder.getPrice().getText().toString());
-//            action.setId(build_id);
-//            NavHostFragment.findNavController(fragment).navigate(action);
-//        });
-//        viewHolder.getImageView().setOnClickListener(v -> {
-//            BuildsFragmentDirections.ActionBuildsFragmentToBuildComponentsFragment action = BuildsFragmentDirections.actionBuildsFragmentToBuildComponentsFragment();
-//            action.setName(viewHolder.getHeader().getText().toString());
-//            action.setPrice(viewHolder.getPrice().getText().toString());
-//            action.setId(build_id);
-//            NavHostFragment.findNavController(fragment).navigate(action);
-//        });
     }
 
     @Override
