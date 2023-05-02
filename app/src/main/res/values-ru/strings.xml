@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_create">мастерская</string>
+    <string name="menu_search">поиск</string>
+    <string name="menu_builds">сборки</string>
+    <string name="theme_btn_text">Тема</string>
+    <string name="create_build">Создать конфигурацию ПК</string>
+    <string name="contentDescription_category_img">Картинка категории</string>
+    <string name="contentDescription_back_img">Кнопка назад</string>
+    <string name="cpu_category_name">Процессоры</string>
+    <string name="gpu_category_name">Видеокарты</string>
+    <string name="motherboard_category_name">Материнские платы</string>
+    <string name="psu_category_name">Блоки питания</string>
+    <string name="ram_category_name">Оперативная память</string>
+    <string name="case_category_name">Корпуса</string>
+    <string name="ssdM_category_name">Накопители SSD(M.2)</string>
+    <string name="ssd2_category_name">Накопители SSD(2.5)</string>
+    <string name="hdd_category_name">Жёсткие диски</string>
+    <string name="cpu_cooling_category_name">Кулеры для процессоров</string>
+    <string name="case_cooling_category_name">Корпусные вентиляторы</string>
+    <string name="btn_delete">Удалить</string>
+    <string name="btn_edit">Изменить</string>
+    <string name="btn_cancel">Отменить</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="btn_select">Выбрать</string>
+    <string name="no_results">Нет результатов</string>
+    <string name="search_hint">Название комплектующей</string>
+    <string name="no_builds">Сборок еще нет</string>
+    <string name="deleted">Элемент уже пуст</string>
+    <string name="dialog_header">Вы уверены, что хотите удалить</string>
+    <string name="dialog_warning">Отменить это действие невозможно!</string>
+    <string name="dialog_btn_cancel">Нет (Отменить)</string>
+    <string name="dialog_btn_accept">Да (Удалить)</string>
+    <string name="dialog_save_btn_cancel">Отменить</string>
+    <string name="dialog_save_btn_accept">Готово</string>
+    <string name="dialog_save_header">Название</string>
+    <string name="dialog_save_hint">Введите имя здесь</string>
+    <string name="build_name">Сборка</string>
+
+    <!-- Types of computer parts -->
+    <string-array name="pc_part_type_names">
+        <item>Процессор </item>
+        <item>Видеокарта </item>
+        <item>Материнская плата </item>
+        <item>Блок питания </item>
+        <item>Оперативная память </item>
+        <item>Кулер </item>
+        <item>Корпус </item>
+        <item>Накопитель SSD(M.2) </item>
+        <item>Накопитель SSD(2.5") </item>
+        <item>Жёсткий диск </item>
+        <item>Вентилятор для корпуса </item>
+    </string-array>
+
+    <!-- Specifications of computer parts -->
+    <string-array name="pc_part_spec_names">
+        <item>Socket: </item>
+        <item>Количество ядер: </item>
+        <item>Тактовая частота(МГц): </item>
+        <item>Тактовая частота turbo(МГц): </item>
+        <item>Тепловыделение(Вт): </item>
+        <item>Объём памяти(Гб): </item>
+        <item>Частота ГП(МГц): </item>
+        <item>Частота ГП boost(МГц): </item>
+        <item>Рекомендуемый блок питания(Вт): </item>
+        <item>Размеры (ШxВxГ мм): </item>
+        <item>Socket: </item>
+        <item>Чипсет: </item>
+        <item>Количество слотов памяти: </item>
+        <item>Тип памяти: </item>
+        <item>Форм-фактор: </item>
+        <item>Мощность(Вт): </item>
+        <item>Стандарт: </item>
+        <item>Размер вентилятора(мм): </item>
+        <item>Сертификат 80 PLUS: </item>
+        <item>Отстёгивающиеся кабели: </item>
+        <item>Тип памяти: </item>
+        <item>Объём памяти(Гб): </item>
+        <item>Количество модулей в комплекте: </item>
+        <item>Тактовая частота(МГц): </item>
+        <item>Пропускная способность(Мб/с): </item>
+        <item>Socket: </item>
+        <item>Максимальная рассеиваемая мощность(Вт): </item>
+        <item>Высота кулера(мм): </item>
+        <item>Размеры вентилятора(мм): </item>
+        <item>Уровень шума(дБ): </item>
+        <item>Типоразмер: </item>
+        <item>Форм-фактор: </item>
+        <item>Максимальная длина видеокарты: </item>
+        <item>Максимальная высота кулера: </item>
+        <item>Размеры (ШxВxГ мм): </item>
+        <item>Форм-фактор: </item>
+        <item>Объём накопителя(Гб): </item>
+        <item>Интерфейс: </item>
+        <item>Скорость чтения(МБ/сек): </item>
+        <item>Скорость записи(МБ/сек): </item>
+        <item>Форм-фактор: </item>
+        <item>Объём накопителя(Гб): </item>
+        <item>Интерфейс: </item>
+        <item>Скорость чтения(МБ/сек): </item>
+        <item>Скорость записи(МБ/сек): </item>
+        <item>Форм-фактор: </item>
+        <item>Объём жёсткого диска(Гб): </item>
+        <item>Интерфейс: </item>
+        <item>Объём буферной памяти(Мб): </item>
+        <item>Скорость вращения(об/мин): </item>
+        <item>Размеры вентилятора(мм): </item>
+        <item>Скорость вращения(об/мин): </item>
+        <item>Воздушный поток(CFM): </item>
+        <item>Уровень шума(дБ): </item>
+        <item>Подсветка: </item>
+    </string-array>
+
+    <!-- Specifications of computer builds -->
+    <string-array name="pc_build_spec_names">
+        <item>Процессор: </item>
+        <item>Видеокарта: </item>
+        <item>Материнская плата: </item>
+        <item>Оперативная память: </item>
+        <item>Блок питания: </item>
+    </string-array>
+</resources>

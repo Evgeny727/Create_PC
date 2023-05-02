@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Create PC</string>
+    <string name="app_name" translatable="false">Create PC</string>
     <!-- Nav bottom bar buttons text -->
     <string name="menu_create">workshop</string>
     <string name="menu_search">search</string>
     <string name="menu_builds">builds</string>
     <!-- Tool bar buttons text -->
     <string name="theme_btn_text">Theme</string>
-    <string name="ru_btn">Ru</string>
-    <string name="en_btn">En</string>
+    <string name="ru_btn" translatable="false">Ru</string>
+    <string name="en_btn" translatable="false">En</string>
 
     <!-- StartFragment button text -->
     <string name="create_build">Create PC configuration</string>
@@ -111,8 +111,8 @@
         <item>Power Supply: </item>
     </string-array>
 
-    <string name="empty_param">-</string>
-    <string name="currency_icon">\u20bd</string>
+    <string name="empty_param" translatable="false">-</string>
+    <string name="currency_icon" translatable="false">\u20bd</string>
 
     <string name="btn_delete">Delete</string>
     <string name="btn_edit">Edit</string>
