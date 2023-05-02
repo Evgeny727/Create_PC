@@ -145,7 +145,8 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         PcCardData cardData = pcCardDataList.get(position);
-        viewHolder.getHeader().setText(cardData.getCardName());
+        String cardName = fragment.getResources().getStringArray(R.array.pc_part_type_names)[position] + cardData.getPcPartName();
+        viewHolder.getHeader().setText(cardName);
         String path = cardData.getPathToImage();
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
@@ -163,12 +164,13 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
             }
         }
         else viewHolder.getImageView().setVisibility(View.INVISIBLE);
-        String[] specifications = cardData.getSpecificationNames();
-        viewHolder.getSpecName1().setText(specifications[0]);
-        viewHolder.getSpecName2().setText(specifications[1]);
-        viewHolder.getSpecName3().setText(specifications[2]);
-        viewHolder.getSpecName4().setText(specifications[3]);
-        viewHolder.getSpecName5().setText(specifications[4]);
+        String[] specifications = fragment.getResources().getStringArray(R.array.pc_part_spec_names);
+        int j = position * 5;
+        viewHolder.getSpecName1().setText(specifications[j]);
+        viewHolder.getSpecName2().setText(specifications[j+1]);
+        viewHolder.getSpecName3().setText(specifications[j+2]);
+        viewHolder.getSpecName4().setText(specifications[j+3]);
+        viewHolder.getSpecName5().setText(specifications[j+4]);
         specifications = cardData.getSpecificationValues();
         viewHolder.getSpecValue1().setText(specifications[0]);
         viewHolder.getSpecValue2().setText(specifications[1]);
