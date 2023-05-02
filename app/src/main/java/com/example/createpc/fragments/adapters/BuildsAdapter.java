@@ -162,6 +162,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         String path = "";
         if (currentId > 0) {
             cursorDB = db.rawQuery("select image from base where _id=" + currentId, null);
+            cursorDB.moveToFirst();
             path = cursorDB.getString(0);
         }
         if (!path.equals("")) {
@@ -268,6 +269,27 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
              list.clear();
              NavHostFragment.findNavController(fragment).navigate(action);
         });
+        viewHolder.itemView.setOnClickListener(v -> {
+            BuildsFragmentDirections.ActionBuildsFragmentToBuildComponentsFragment action = BuildsFragmentDirections.actionBuildsFragmentToBuildComponentsFragment();
+            action.setName(viewHolder.getHeader().getText().toString());
+            action.setPrice(viewHolder.getPrice().getText().toString());
+            action.setId(build_id);
+            NavHostFragment.findNavController(fragment).navigate(action);
+        });
+//        viewHolder.getHeader().setOnClickListener(v -> {
+//            BuildsFragmentDirections.ActionBuildsFragmentToBuildComponentsFragment action = BuildsFragmentDirections.actionBuildsFragmentToBuildComponentsFragment();
+//            action.setName(viewHolder.getHeader().getText().toString());
+//            action.setPrice(viewHolder.getPrice().getText().toString());
+//            action.setId(build_id);
+//            NavHostFragment.findNavController(fragment).navigate(action);
+//        });
+//        viewHolder.getImageView().setOnClickListener(v -> {
+//            BuildsFragmentDirections.ActionBuildsFragmentToBuildComponentsFragment action = BuildsFragmentDirections.actionBuildsFragmentToBuildComponentsFragment();
+//            action.setName(viewHolder.getHeader().getText().toString());
+//            action.setPrice(viewHolder.getPrice().getText().toString());
+//            action.setId(build_id);
+//            NavHostFragment.findNavController(fragment).navigate(action);
+//        });
     }
 
     @Override

@@ -12,8 +12,9 @@
     <!-- StartFragment button text -->
     <string name="create_build">Create PC configuration</string>
 
-    <!-- SearchFragment cards image description -->
+    <!-- Image description -->
     <string name="contentDescription_category_img">category image</string>
+    <string name="contentDescription_back_img">back button</string>
     <!-- SearchFragment cards text -->
     <string name="cpu_category_name">Processors</string>
     <string name="gpu_category_name">Graphics cards</string>
@@ -103,11 +104,11 @@
 
     <!-- Specifications of computer builds -->
     <string-array name="pc_build_spec_names">
-        <item>Processor </item>
-        <item>Graphics card </item>
-        <item>Motherboard </item>
-        <item>RAM </item>
-        <item>Power Supply </item>
+        <item>Processor: </item>
+        <item>Graphics card: </item>
+        <item>Motherboard: </item>
+        <item>RAM: </item>
+        <item>Power Supply: </item>
     </string-array>
 
     <string name="empty_param">-</string>
