@@ -145,7 +145,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         PcCardData cardData = pcCardDataList.get(position);
-        String cardName = fragment.getResources().getStringArray(R.array.pc_part_type_names)[position] + cardData.getPcPartName();
+        String cardName = fragment.getResources().getStringArray(R.array.pc_part_type_names)[position] + " " + cardData.getPcPartName();
         viewHolder.getHeader().setText(cardName);
         String path = cardData.getPathToImage();
         if (!path.equals("")) {
