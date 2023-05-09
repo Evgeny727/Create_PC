@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -136,6 +137,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
         this.fragment = fragment;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_card_item, viewGroup, false);
@@ -152,7 +154,7 @@ public class CreateAdapter extends RecyclerView.Adapter<CreateAdapter.ViewHolder
             ImageView imageView = viewHolder.getImageView();
             imageView.setVisibility(View.VISIBLE);
             viewHolder.setDeleted(false);
-            try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
+            try(InputStream inputStream = fragment.requireContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);

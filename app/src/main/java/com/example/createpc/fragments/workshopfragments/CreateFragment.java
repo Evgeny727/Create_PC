@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,8 +29,6 @@ import java.util.List;
 
 public class CreateFragment extends Fragment {
     private FragmentCreateBinding fragmentCreateBinding;
-    private RecyclerView mRecyclerView;
-    private CreateAdapter mAdapter;
     private List<PcCardData> pcCardDataList = new ArrayList<>();
     private static int build_id = -1;
     private final Fragment fragment = this;
@@ -41,7 +40,7 @@ public class CreateFragment extends Fragment {
         super.onCreate(savedInstanceState);
         getParentFragmentManager().setFragmentResultListener("NameKey", this, (requestKey, bundle) -> {
             build_name = bundle.getString("build_name");
-            DatabaseBuildsHelper databaseBuildsHelper = new DatabaseBuildsHelper(getActivity().getApplicationContext());
+            DatabaseBuildsHelper databaseBuildsHelper = new DatabaseBuildsHelper(requireActivity().getApplicationContext());
             SQLiteDatabase db = databaseBuildsHelper.getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(DatabaseBuildsHelper.COLUMN_NAME, build_name);
@@ -66,8 +65,8 @@ public class CreateFragment extends Fragment {
             navigateToStart(fragment);
         });
         if (!isNeedToSaveId) {
-            build_id = CreateFragmentArgs.fromBundle(getArguments()).getBuildId();
-            build_name = CreateFragmentArgs.fromBundle(getArguments()).getBuildName();
+            build_id = CreateFragmentArgs.fromBundle(requireArguments()).getBuildId();
+            build_name = CreateFragmentArgs.fromBundle(requireArguments()).getBuildName();
         }
         if (build_id > 0) {
             OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
@@ -86,12 +85,12 @@ public class CreateFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentCreateBinding = FragmentCreateBinding.inflate(inflater, container, false);
         View view = fragmentCreateBinding.getRoot();
 
-        mRecyclerView = fragmentCreateBinding.recyclerViewInCreatePage;
-        mAdapter = new CreateAdapter(pcCardDataList, fragment);
+        RecyclerView mRecyclerView = fragmentCreateBinding.recyclerViewInCreatePage;
+        CreateAdapter mAdapter = new CreateAdapter(pcCardDataList, fragment);
         mRecyclerView.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);

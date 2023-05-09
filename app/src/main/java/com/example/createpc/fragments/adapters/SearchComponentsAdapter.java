@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,11 +22,9 @@ import java.util.List;
 
 public class SearchComponentsAdapter  extends RecyclerView.Adapter<SearchComponentsAdapter.ViewHolder> {
     private final Fragment fragment;
-    private final int partType;
     private final List<PcCardData> pcCardDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartSearchCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -42,7 +41,7 @@ public class SearchComponentsAdapter  extends RecyclerView.Adapter<SearchCompone
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartSearchCardItemBinding.bind(view);
+            PcPartSearchCardItemBinding binding = PcPartSearchCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -111,12 +110,12 @@ public class SearchComponentsAdapter  extends RecyclerView.Adapter<SearchCompone
         }
     }
 
-    public SearchComponentsAdapter(List<PcCardData> pcCardDataList, int partType, Fragment fragment) {
+    public SearchComponentsAdapter(List<PcCardData> pcCardDataList, Fragment fragment) {
         this.pcCardDataList = pcCardDataList;
-        this.partType = partType;
         this.fragment = fragment;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_card_item, viewGroup, false);
@@ -130,7 +129,7 @@ public class SearchComponentsAdapter  extends RecyclerView.Adapter<SearchCompone
         String path = cardData.getPathToImage();
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
-            try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
+            try(InputStream inputStream = fragment.requireContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);

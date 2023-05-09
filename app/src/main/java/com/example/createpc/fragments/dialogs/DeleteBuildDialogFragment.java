@@ -15,24 +15,27 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.createpc.R;
 import com.example.createpc.databinding.DialogFragmentDeleteElementBinding;
 
+import java.util.Objects;
+
 public class DeleteBuildDialogFragment extends DialogFragment {
     private DialogFragmentDeleteElementBinding dialogFragmentDeleteElementBinding;
 
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         dialogFragmentDeleteElementBinding = DialogFragmentDeleteElementBinding.inflate(requireActivity().getLayoutInflater());
         TextView header = dialogFragmentDeleteElementBinding.dialogHeader;
-        int position = getArguments().getInt("id");
-        String name = getArguments().getString("name");
+        int position = requireArguments().getInt("id");
+        String name = requireArguments().getString("name");
         String title = getString(R.string.dialog_header) + " " + name + "?";
         header.setText(title);
         builder.setView(dialogFragmentDeleteElementBinding.getRoot())
-                .setNegativeButton(R.string.dialog_btn_cancel, (dialog, id) -> DeleteBuildDialogFragment.this.getDialog().cancel())
+                .setNegativeButton(R.string.dialog_btn_cancel, (dialog, id) -> DeleteBuildDialogFragment.this.requireDialog().cancel())
                 .setPositiveButton(R.string.dialog_btn_accept, (dialog, id) -> {
                     Bundle bundle = new Bundle();
                     bundle.putInt("id", position);
                     getParentFragmentManager().setFragmentResult("BuildKey", bundle);
-                    DeleteBuildDialogFragment.this.getDialog().dismiss();
+                    DeleteBuildDialogFragment.this.requireDialog().dismiss();
                 });
         return builder.setView(dialogFragmentDeleteElementBinding.getRoot()).create();
     }

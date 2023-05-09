@@ -1,10 +1,10 @@
 package com.example.createpc.fragments.buildsfragments;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,26 +18,19 @@ import android.widget.TextView;
 import com.example.createpc.databinding.FragmentBuildsBinding;
 import com.example.createpc.fragments.adapters.BuildsAdapter;
 import com.example.createpc.fragments.dataclasses.DatabaseBuildsHelper;
-import com.example.createpc.fragments.dataclasses.DatabaseHelper;
-import com.example.createpc.fragments.dataclasses.PcCardData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BuildsFragment extends Fragment {
     private final Fragment fragment = this;
     private FragmentBuildsBinding fragmentBuildBinding;
-    private RecyclerView mRecyclerView;
     private BuildsAdapter mAdapter;
-    private TextView noBuilds;
-    private DatabaseBuildsHelper helper;
     private SQLiteDatabase db;
     private Cursor cursor;
 
+    @SuppressWarnings("resource")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        helper = new DatabaseBuildsHelper(getActivity().getApplicationContext());
+        DatabaseBuildsHelper helper = new DatabaseBuildsHelper(requireActivity().getApplicationContext());
         db = helper.getWritableDatabase();
         getParentFragmentManager().setFragmentResultListener("BuildKey", this, (requestKey, bundle) -> {
             int build_id = bundle.getInt("id");
@@ -46,11 +39,11 @@ public class BuildsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentBuildBinding = FragmentBuildsBinding.inflate(inflater, container, false);
         View view = fragmentBuildBinding.getRoot();
-        mRecyclerView = fragmentBuildBinding.recyclerViewInBuildPage;
-        noBuilds = fragmentBuildBinding.noBuildsTextview;
+        RecyclerView mRecyclerView = fragmentBuildBinding.recyclerViewInBuildPage;
+        TextView noBuilds = fragmentBuildBinding.noBuildsTextview;
 
         cursor = db.rawQuery("select * from " + DatabaseBuildsHelper.TABLE, null);
         if (cursor.getCount() > 0) {

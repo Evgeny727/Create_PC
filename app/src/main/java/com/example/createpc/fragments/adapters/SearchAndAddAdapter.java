@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +29,6 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
     private final List<PcCardData> pcCardDataList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartSearchAndAddCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -46,7 +46,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartSearchAndAddCardItemBinding.bind(view);
+            PcPartSearchAndAddCardItemBinding binding = PcPartSearchAndAddCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -126,6 +126,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
         this.fragment = fragment;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_and_add_card_item, viewGroup, false);
@@ -139,7 +140,7 @@ public class SearchAndAddAdapter  extends RecyclerView.Adapter<SearchAndAddAdapt
         String path = cardData.getPathToImage();
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
-            try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
+            try(InputStream inputStream = fragment.requireContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);

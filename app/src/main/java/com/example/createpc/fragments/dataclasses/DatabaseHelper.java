@@ -13,9 +13,10 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+@SuppressWarnings("unused")
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_PATH; // path to db
-    private static String DB_NAME = "pc_parts.db";
+    private static final String DB_NAME = "pc_parts.db";
     private static final int SCHEMA = 1;
     public static final String[] TABLEs = {"cpu", "gpu", "motherboard", "psu",
             "ram", "cooler", "base", "ssdm", "ssd2", "hdd", "fan"};
@@ -29,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PARAM3 = "param3";
     public static final String COLUMN_PARAM4 = "param4";
     public static final String COLUMN_PARAM5 = "param5";
-    private Context myContext;
+    private final Context myContext;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, SCHEMA);

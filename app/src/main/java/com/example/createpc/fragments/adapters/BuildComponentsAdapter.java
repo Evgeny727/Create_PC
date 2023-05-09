@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,14 +26,11 @@ import java.util.List;
 
 public class BuildComponentsAdapter  extends RecyclerView.Adapter<BuildComponentsAdapter.ViewHolder> {
 
-    private List<PcCardData> pcCardDataList;
+    private final List<PcCardData> pcCardDataList;
     private final Fragment fragment;
-    private final DatabaseHelper helper;
-    private final SQLiteDatabase db;
     private Cursor cursorDB;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartSearchCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -49,7 +47,7 @@ public class BuildComponentsAdapter  extends RecyclerView.Adapter<BuildComponent
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartSearchCardItemBinding.bind(view);
+            PcPartSearchCardItemBinding binding = PcPartSearchCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -120,9 +118,9 @@ public class BuildComponentsAdapter  extends RecyclerView.Adapter<BuildComponent
 
     public BuildComponentsAdapter(Cursor cursor, Fragment fragment) {
         this.fragment = fragment;
-        helper = new DatabaseHelper(fragment.getActivity().getApplicationContext());
+        DatabaseHelper helper = new DatabaseHelper(fragment.requireActivity().getApplicationContext());
         helper.create_db();
-        db = helper.open();
+        SQLiteDatabase db = helper.open();
         pcCardDataList = new ArrayList<>();
         String[] typeNames = fragment.getResources().getStringArray(R.array.pc_part_type_names);
         String[] specNames5 = fragment.getResources().getStringArray(R.array.pc_part_spec_names);
@@ -142,9 +140,15 @@ public class BuildComponentsAdapter  extends RecyclerView.Adapter<BuildComponent
             }
         }
         db.close();
-        cursorDB.close();
+        try {
+            cursorDB.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    @NonNull
     @Override
     public BuildComponentsAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pc_part_search_card_item, viewGroup, false);
@@ -159,7 +163,7 @@ public class BuildComponentsAdapter  extends RecyclerView.Adapter<BuildComponent
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
             imageView.setVisibility(View.VISIBLE);
-            try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
+            try(InputStream inputStream = fragment.requireContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);

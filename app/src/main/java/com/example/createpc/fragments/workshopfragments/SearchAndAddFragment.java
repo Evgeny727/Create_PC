@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,8 +35,7 @@ public class SearchAndAddFragment extends Fragment {
     private FragmentSearchAndAddBinding fragmentSearchAndAddBinding;
     private RecyclerView mRecyclerView;
     private SearchAndAddAdapter mAdapter;
-    private LinearLayoutManager layoutManager;
-    private List<PcCardData> pcCardDataList = new ArrayList<>();
+    private final List<PcCardData> pcCardDataList = new ArrayList<>();
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase db;
     private Cursor cursor;
@@ -46,7 +46,7 @@ public class SearchAndAddFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        partType = SearchAndAddFragmentArgs.fromBundle(getArguments()).getPartTypeId();
+        partType = SearchAndAddFragmentArgs.fromBundle(requireArguments()).getPartTypeId();
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -54,12 +54,12 @@ public class SearchAndAddFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
-        databaseHelper = new DatabaseHelper(getActivity().getApplicationContext());
+        databaseHelper = new DatabaseHelper(requireActivity().getApplicationContext());
         databaseHelper.create_db();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentSearchAndAddBinding = FragmentSearchAndAddBinding.inflate(inflater, container, false);
         View view = fragmentSearchAndAddBinding.getRoot();
         mRecyclerView = fragmentSearchAndAddBinding.recyclerViewInSearchPage;
@@ -76,7 +76,7 @@ public class SearchAndAddFragment extends Fragment {
             noResults.setVisibility(View.GONE);
             mAdapter = new SearchAndAddAdapter(pcCardDataList, partType, fragment);
             mRecyclerView.setAdapter(mAdapter);
-            layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
         }
         return view;
@@ -118,7 +118,7 @@ public class SearchAndAddFragment extends Fragment {
                     clearSearchText.setVisibility(View.VISIBLE);
                     String inputText = charSequence.toString();
                     inputText = parseInputText(inputText);
-                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "\'%" + inputText + "%\'", null);
+                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "'%" + inputText + "%'", null);
                 }
                 pcCardDataList.clear();
                 setPcCardDataList(cursor);

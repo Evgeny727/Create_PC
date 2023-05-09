@@ -1,7 +1,6 @@
 package com.example.createpc.fragments.dataclasses;
 
-import android.util.Log;
-
+@SuppressWarnings("unused")
 public class PcCardData {
     private static String currency_icon;
     private int id;

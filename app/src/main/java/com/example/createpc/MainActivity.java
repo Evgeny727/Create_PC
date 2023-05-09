@@ -27,8 +27,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding activityMainBinding;
-
     SharedPreferences settings;
 
     private static boolean isRecreated = false;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
         settings = getSharedPreferences("Settings", MODE_PRIVATE);
         if (settings.contains("language")) {
@@ -150,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Bottom Navigation Menu
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
+        NavController navController = Objects.requireNonNull(navHostFragment).getNavController();
         BottomNavigationView bottomNavigationView = activityMainBinding.navigationMenu;
 
         //Listener for app navigation

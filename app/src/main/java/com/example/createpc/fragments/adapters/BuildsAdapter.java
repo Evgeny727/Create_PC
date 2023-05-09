@@ -34,12 +34,10 @@ import java.util.List;
 public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder> {
     private final Fragment fragment;
     private final Cursor cursor;
-    private final DatabaseHelper helper;
     private final SQLiteDatabase db;
     private Cursor cursorDB;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final PcPartCardItemBinding binding;
         private final TextView header;
         private final ImageView imageView;
         private final TextView specName1;
@@ -58,7 +56,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
 
         public ViewHolder(View view) {
             super(view);
-            binding = PcPartCardItemBinding.bind(view);
+            com.example.createpc.databinding.PcPartCardItemBinding binding = PcPartCardItemBinding.bind(view);
             header = binding.pcPartCardHeader;
             imageView = binding.pcPartCardImg;
             specName1 = binding.pcPartCardSpecName1;
@@ -137,10 +135,11 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         }
     }
 
+    @SuppressWarnings("resource")
     public BuildsAdapter(Cursor cursor, Fragment fragment) {
         this.cursor = cursor;
         this.fragment = fragment;
-        helper = new DatabaseHelper(fragment.getActivity().getApplicationContext());
+        DatabaseHelper helper = new DatabaseHelper(fragment.requireActivity().getApplicationContext());
         helper.create_db();
         db = helper.open();
     }
@@ -168,7 +167,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         if (!path.equals("")) {
             ImageView imageView = viewHolder.getImageView();
             imageView.setVisibility(View.VISIBLE);
-            try(InputStream inputStream = fragment.getContext().getApplicationContext().getAssets().open(path)) {
+            try(InputStream inputStream = fragment.requireContext().getApplicationContext().getAssets().open(path)) {
                 Drawable drawable = Drawable.createFromStream(inputStream, null);
                 imageView.setImageDrawable(drawable);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);

@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,8 +33,7 @@ public class SearchComponentsFragment extends Fragment {
     private FragmentSearchComponentsBinding fragmentSearchComponentsBinding;
     private RecyclerView mRecyclerView;
     private SearchComponentsAdapter mAdapter;
-    private LinearLayoutManager layoutManager;
-    private List<PcCardData> pcCardDataList = new ArrayList<>();
+    private final List<PcCardData> pcCardDataList = new ArrayList<>();
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase db;
     private Cursor cursor;
@@ -44,13 +44,13 @@ public class SearchComponentsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        partType = SearchComponentsFragmentArgs.fromBundle(getArguments()).getTypeId();
-        databaseHelper = new DatabaseHelper(getActivity().getApplicationContext());
+        partType = SearchComponentsFragmentArgs.fromBundle(requireArguments()).getTypeId();
+        databaseHelper = new DatabaseHelper(requireActivity().getApplicationContext());
         databaseHelper.create_db();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentSearchComponentsBinding = FragmentSearchComponentsBinding.inflate(inflater, container, false);
         View view = fragmentSearchComponentsBinding.getRoot();
         mRecyclerView = fragmentSearchComponentsBinding.recyclerViewInSearchPage;
@@ -65,9 +65,9 @@ public class SearchComponentsFragment extends Fragment {
         setPcCardDataList(cursor);
         if (!pcCardDataList.isEmpty()) {
             noResults.setVisibility(View.GONE);
-            mAdapter = new SearchComponentsAdapter(pcCardDataList, partType, fragment);
+            mAdapter = new SearchComponentsAdapter(pcCardDataList, fragment);
             mRecyclerView.setAdapter(mAdapter);
-            layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
         }
         return view;
@@ -105,13 +105,13 @@ public class SearchComponentsFragment extends Fragment {
                     clearSearchText.setVisibility(View.VISIBLE);
                     String inputText = charSequence.toString();
                     inputText = parseInputText(inputText);
-                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "\'%" + inputText + "%\'", null);
+                    cursor = db.rawQuery("select * from " + DatabaseHelper.TABLEs[partType] + " where name like " + "'%" + inputText + "%'", null);
                 }
                 pcCardDataList.clear();
                 setPcCardDataList(cursor);
                 if (!pcCardDataList.isEmpty()) {
                     noResults.setVisibility(View.GONE);
-                    mAdapter = new SearchComponentsAdapter(pcCardDataList, partType, fragment);
+                    mAdapter = new SearchComponentsAdapter(pcCardDataList, fragment);
                     mRecyclerView.setAdapter(mAdapter);
                     mRecyclerView.setVisibility(View.VISIBLE);
                 }
